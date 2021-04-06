@@ -3,3 +3,132 @@
   margin: 0;
   padding: 0;
 }
+
+.wrapper {
+  max-width: 1100px;
+  width: 100%;
+  padding: 0 10px;
+  margin: 68px auto;
+}
+
+// header
+.header-block {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 24px;
+}
+
+.total-score {
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.correct-answer {}
+
+// header
+
+// body
+.list {
+  margin-bottom: 56px;
+}
+
+.list-items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.list-word {
+  font-size: 26px;
+  line-height: 1.25;
+  max-width: 50%;
+  width: 100%;
+  text-align: right;
+  margin-right: 44px;
+}
+
+.form-block {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-holder {
+  max-width: 50%;
+  width: 100%;
+  height: 34px;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    right: -30px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  &.is-correct {
+    &:after {
+      background-image: url(../img/icon-check.svg);
+    }
+  }
+
+  &.is-wrong {
+    &:after {
+      background-image: url(../img/icon-wrong.svg);
+    }
+  }
+}
+
+.form-control {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 4px 12px;
+  border: 1px solid #bdc3c7;
+  outline: none;
+  font-size: 18px;
+  line-height: 1.25;
+
+  &:focus {
+    border: 1px solid #7f8c8d;
+  }
+}
+
+.btn-check {
+  display: block;
+  margin: 0 auto;
+  max-width: 280px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 50px;
+  background-color: #27ae60;
+  border: 2px solid #27ae60;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1.25;
+  transition: 0.3s ease;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      background-color: #0a8a40;
+      border: 2px solid #0a8a40;
+    }
+  }
+}
+
+// body
