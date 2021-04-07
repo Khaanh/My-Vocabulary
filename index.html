@@ -16,32 +16,13 @@
       <!-- <h1 class="title">Me Vocabulary</h1> -->
       <strong class="total-score">
         <p>Correct answers: </p>
-        <span class="correct-answer">10 </span>
-        <span> /10</span>
+        <span class="correct-answer" id="js-correctAnswers"></span>
+        <span id="js-totalAnswers"></span>
       </strong>
     </section>
     <section class="body-block">
       <form action="#" class="form-block">
-        <ol class="list">
-          <li class="list-items">
-            <span class="list-word">Muster up the courage</span>
-            <div class="form-holder">
-              <input type="text" class="form-control">
-            </div>
-          </li>
-          <li class="list-items">
-            <span class="list-word">Audacious</span>
-            <div class="form-holder is-correct">
-              <input type="text" class="form-control">
-            </div>
-          </li>
-          <li class="list-items">
-            <span class="list-word">tick off</span>
-            <div class="form-holder is-wrong">
-              <input type="text" class="form-control">
-            </div>
-          </li>
-        </ol>
+        <ol class="list" id="js-listWords"></ol>
 
         <button type="button" class="btn-check">Check</button>
       </form>
