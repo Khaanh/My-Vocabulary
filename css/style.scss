@@ -34,8 +34,11 @@
 // header
 
 // body
-.list {
-  margin-bottom: 56px;
+.holder {
+  margin-bottom: 46px;
+  border: 1px solid #27ae60;
+  padding: 24px;
+  border-radius: 10px;
 }
 
 .list-items {
@@ -43,6 +46,15 @@
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 16px;
+  cursor: pointer;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      .list-origin {
+        opacity: 0.7;
+      }
+    }
+  }
 }
 
 .list-origin {
@@ -52,6 +64,8 @@
   width: 100%;
   text-align: right;
   margin-right: 44px;
+  opacity: 1;
+  transition: 0.2s ease;
 }
 
 .form-block {
@@ -98,7 +112,7 @@
   border-radius: 5px;
   overflow: hidden;
   padding: 4px 12px;
-  border: 1px solid #bdc3c7;
+  border: 1px solid #27ae60;
   outline: none;
   font-size: 18px;
   line-height: 1.25;
