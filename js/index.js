@@ -3,8 +3,7 @@ let correctAnswers = document.querySelector('#js-correctAnswers');
 let totalAnswers = document.querySelector('#js-totalAnswers');
 let btnCheck = document.querySelector('#js-btnCheck');
 let inputValues; // SELECT ALL ".form-control"
-// let isCorrectResults = [];
-
+let iconForHelp;
 //VOCABULARY LIST WORD
 let wordsArray = [
 	{
@@ -39,12 +38,12 @@ let wordsArray = [
 
 
 //CHECK AVAILABILITY ARRAY WORD BEFORE START
-totalAnswers.textContent = (wordsArray.length > 0) ? `/ ${wordsArray.length}` : '/ 0';
+totalAnswers.textContent = (wordsArray.length > 0) ? `/${wordsArray.length}` : '/ 0';
 correctAnswers.textContent = 0;
 
 
 // CREATE A LIST FOR EACH OF WORD
-wordsArray.forEach((item, index) => {
+wordsArray.forEach((item) => {
 	createList(item.origin, item.translate);
 });
 
@@ -83,9 +82,11 @@ btnCheck.addEventListener('click', () => {
 		}
 	}
 
-	console.log(isEmptyAnswer);
-	
+	// console.log(isEmptyAnswer);
+	displayScore(isCorrectAnswer)
 	addMarks(isCorrectAnswer, isWrongAnswer, isEmptyAnswer)
+	iconForHelp = document.querySelectorAll('.icon-empty');
+	showTooltTips(iconForHelp)
 })
 
 
@@ -94,22 +95,60 @@ function getClosestEl(el) {
 	return el.parentElement.previousElementSibling.dataset.translate;
 }
 
+
 // FUNCTION ADD MARKS RELEVANT ANSWERS
 function addMarks(correct, wrong, empty) {
-
-	correct.forEach(item => {
+	
+	correct.forEach( item => {
 		item.disabled = true;
 		item.parentElement.classList.add('is-correct');
 	})
 	
-	wrong.forEach(item => {
+	wrong.forEach( item => {
 		item.disabled = true;
 		item.parentElement.classList.add('is-wrong');
 	})
 	
-	empty.forEach(item => {
+	empty.forEach( item => {
+		let iconEmpty = createIconEmpty();
+
 		item.value = '[no answer]';
 		item.disabled = true;
 		item.parentElement.classList.add('is-empty');
+		item.parentElement.appendChild(iconEmpty);
 	})
 }
+
+
+// FUNCTION DISPLAY USER'S SCORES
+function displayScore(scores) {
+	let totalScore = document.querySelector('.total-score');
+	let titleH2 = document.querySelector('.title-h2');
+
+	correctAnswers.textContent = scores.length;
+	totalScore.classList.remove('is-hidden');
+	titleH2.classList.add('is-hidden');
+}
+
+
+// FUNCTION CREATE TAG "<i>" FOR APPEND ICON 
+function createIconEmpty() {
+	let emptyElem = document.createElement('i');
+	emptyElem.classList.add('icon-empty')
+	return emptyElem;
+}
+
+
+// FUNCTION SHOW TOOL TIPS
+function showTooltTips(nodeList) {
+	let arr = [...nodeList];
+	
+	for (let i = 0; i < arr.length; i++) {
+		arr[i].addEventListener('mouseenter', function () {
+			let toolTip = arr[i].parentElement.previousElementSibling.dataset.translate;
+			console.log(toolTip);
+		})
+	}
+}
+
+
