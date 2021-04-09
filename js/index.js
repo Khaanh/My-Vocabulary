@@ -3,7 +3,7 @@ let correctAnswers = document.querySelector('#js-correctAnswers');
 let totalAnswers = document.querySelector('#js-totalAnswers');
 let btnCheck = document.querySelector('#js-btnCheck');
 let inputValues; // SELECT ALL ".form-control"
-let result; // [] COLLECT ALL CORRECT ANSWERS
+// let isCorrectResults = [];
 
 //VOCABULARY LIST WORD
 let wordsArray = [
@@ -52,32 +52,64 @@ wordsArray.forEach((item, index) => {
 // FUNCTION TO CREATE LIST WITH TWO PARAMS
 function createList(origin, translate) {
 	let li = document.createElement('label');
-
+	
 	li.classList.add('list-items');
 	li.innerHTML = `<span class="list-origin" data-translate="${translate}">${origin}</span>
-            <div class="form-holder">
-              <input type="text" class="form-control">
-            </div>`;
-
+	<div class="form-holder">
+	<input type="text" class="form-control">
+	</div>`;
+	
 	holderWords.appendChild(li);
 	
 	// AFTER CREATED ALL LIST, SELECT IT TO GET VALUES
-  inputValues = document.querySelectorAll('.form-control');
+	inputValues = document.querySelectorAll('.form-control');
 }
 
 
 // BUTTON TO CHECK VALUES
 btnCheck.addEventListener('click', () => {
 	let arrValues = [...inputValues];
+	let isCorrectAnswer = [];
+	let isWrongAnswer = [];
+	let isEmptyAnswer = [];
+	
+	for (let i = 0; i < arrValues.length; i++) {
+		if ( getClosestEl(arrValues[i]) === arrValues[i].value.trim().toLowerCase() ) {
+			isCorrectAnswer.push(arrValues[i])
+		} else if (arrValues[i].value.trim() == '' || arrValues[i].value == '[no answer]') {
+			isEmptyAnswer.push(arrValues[i])
+		} else {
+			isWrongAnswer.push(arrValues[i])
+		}
+	}
 
-	result = arrValues.filter(itemVal => {
-		return getClosestEl(itemVal) === itemVal.value.trim().toLowerCase();
-	})
-
+	console.log(isEmptyAnswer);
+	
+	addMarks(isCorrectAnswer, isWrongAnswer, isEmptyAnswer)
 })
 
 
 // FUNCTION TAKE CLOSEST ORIGIN WORD & RETURN TRANSLATE
 function getClosestEl(el) {
 	return el.parentElement.previousElementSibling.dataset.translate;
+}
+
+// FUNCTION ADD MARKS RELEVANT ANSWERS
+function addMarks(correct, wrong, empty) {
+
+	correct.forEach(item => {
+		item.disabled = true;
+		item.parentElement.classList.add('is-correct');
+	})
+	
+	wrong.forEach(item => {
+		item.disabled = true;
+		item.parentElement.classList.add('is-wrong');
+	})
+	
+	empty.forEach(item => {
+		item.value = '[no answer]';
+		item.disabled = true;
+		item.parentElement.classList.add('is-empty');
+	})
 }

@@ -102,6 +102,15 @@
 .form-holder.is-wrong:after {
   background-image: url(../img/icon-wrong.svg);
 }
+.form-holder.is-wrong .form-control {
+  border: 1px solid #e74c3c;
+}
+.form-holder.is-empty:after {
+  background-image: url(../img/icon-empty.svg);
+}
+.form-holder.is-empty .form-control {
+  border: 1px solid #e74c3c;
+}
 
 .form-control {
   width: 100%;

@@ -103,6 +103,20 @@
     &:after {
       background-image: url(../img/icon-wrong.svg);
     }
+
+    .form-control {
+      border: 1px solid #e74c3c;
+    }
+  }
+
+  &.is-empty {
+    &:after {
+      background-image: url(../img/icon-empty.svg);
+    }
+
+    .form-control {
+      border: 1px solid #e74c3c;
+    }
   }
 }
 
