@@ -6,10 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Me Vocabulary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>My Vocabulary</title>
 </head>
 
 <body>
+
+  <div class="wrapper">
+    <section class="header-block">
+      <strong class="total-score is-hidden">
+        <p>Correct answers: </p>
+        <span class="correct-answer" id="js-correctAnswers"></span>
+        <span id="js-totalAnswers"></span>
+      </strong>
+      <h2 class="title-h2">Good luck!</h2>
+    </section>
+    <section class="body-block">
+      <form action="#" class="form-block">
+        <div class="holder" id="js-holderWords"></div>
+        <button type="button" class="btn-check" id="js-btnCheck">Check</button>
+      </form>
+    </section>
+  </div>
 
   <script src="./js/index.js"></script>
 </body>
