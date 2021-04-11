@@ -68,7 +68,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
   cursor: pointer;
 }
 
@@ -76,6 +76,23 @@ body {
   .list-items:hover .list-origin {
     opacity: 0.7;
   }
+}
+
+.list-items:last-child {
+  margin-bottom: 0;
+}
+
+.list-items .show-answer {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  padding: 0 10px;
+  color: #27ae60;
+  position: absolute;
+  bottom: -24%;
+  left: 0;
+  -webkit-transform: translate(0, 50%);
+          transform: translate(0, 50%);
 }
 
 .list-origin {
@@ -135,7 +152,7 @@ body {
 
 .form-holder .tool-tip {
   position: absolute;
-  right: -16px;
+  right: -36px;
   top: 50%;
   -webkit-transform: translate(calc(100% + 45px), -50%);
           transform: translate(calc(100% + 45px), -50%);
@@ -151,6 +168,9 @@ body {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s ease-in-out, right 0.2s ease-in-out;
+  transition: opacity 0.1s ease-in-out, right 0.2s ease-in-out;
 }
 
 .form-holder .tool-tip:after {
@@ -208,6 +228,7 @@ body {
   border: 2px solid #27ae60;
   color: #fff;
   cursor: pointer;
+  outline: none;
   font-size: 24px;
   line-height: 1.25;
   -webkit-transition: 0.3s ease;

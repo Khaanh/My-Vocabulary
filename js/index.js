@@ -1,9 +1,17 @@
+/**
+ * 11/04/21
+ * TODO : Add button reset;
+ * TODO : Modal with new words;
+ * TODO : Loading screen;
+ */
+
 let holderWords = document.querySelector('#js-holderWords');
 let correctAnswers = document.querySelector('#js-correctAnswers');
 let totalAnswers = document.querySelector('#js-totalAnswers');
 let btnCheck = document.querySelector('#js-btnCheck');
 let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
+
 //VOCABULARY LIST WORD
 let wordsArray = [
 	{
@@ -85,6 +93,7 @@ btnCheck.addEventListener(
 		addMarks(isCorrectAnswer, isWrongAnswer, isEmptyAnswer);
 		iconForHelp = document.querySelectorAll('.icon-empty');
 		showTooltTips(iconForHelp);
+		showCorrectAnswers(isWrongAnswer);
 	},
 	{ once: true }
 );
@@ -142,6 +151,15 @@ function createTagTranslate() {
 	return tagTranslate;
 }
 
+// FUNCTION CREATE TAG "<span>" FOR CORRECT ANSWERS
+function createTagForCorrectAnswers(value) {
+	let showAnswer = document.createElement('span');
+	showAnswer.classList.add('show-answer');
+
+	showAnswer.textContent = value.parentElement.previousElementSibling.dataset.translate;
+	return showAnswer;
+}
+
 // FUNCTION SHOW TOOL TIPS
 function showTooltTips(nodeList) {
 	let arr = [...nodeList];
@@ -149,16 +167,27 @@ function showTooltTips(nodeList) {
 	span.classList.add('tool-tip');
 
 	for (let i = 0; i < arr.length; i++) {
-		// arr[i].addEventListener('mouseenter', function () {
-		// 	let toolTip = arr[i].parentElement.previousElementSibling.dataset.translate;
-		// 	console.log(toolTip);
-		// 	span.innerText = toolTip;
-		// 	arr[i].parentElement.appendChild(span);
-		// });
-		// arr[i].addEventListener('mouseleave', function () {
-		// 	arr[i].parentElement.nextElementSibling.style.opacity = 0;
-		// });
+		arr[i].addEventListener('mouseenter', function () {
+			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
+				opacity: 1;
+				right: -16px;
+			`;
+		});
+
+		arr[i].addEventListener('mouseleave', function () {
+			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
+				opacity: 0;
+				right: -36px;
+			`;
+		});
 	}
+}
+
+// FUNCTION SHOW CORRECT ANSWERS
+function showCorrectAnswers(arr) {
+	arr.forEach((item) => {
+		item.parentElement.appendChild(createTagForCorrectAnswers(item));
+	});
 }
 
 // FUNCTION MANIPULATE WITH PARENT ELEM
