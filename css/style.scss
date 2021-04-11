@@ -133,6 +133,34 @@ body {
       border: 1px solid #e74c3c;
     }
   }
+
+  .tool-tip {
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translate(calc(100% + 45px), -50%);
+    font-size: 18px;
+    border: 1px solid #e67e22;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: #e67e22;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-align: center;
+    width: max-content;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -13px;
+      top: 50%;
+      border: 8px solid #e67e22;
+      transform: rotate(45deg) translate(-10%, -55%);
+      border-right-color: transparent;
+      border-top-color: transparent;
+    }
+  }
 }
 
 .form-control {

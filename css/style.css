@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .is-hidden {
@@ -24,6 +24,7 @@ body {
   text-align: center;
   margin-bottom: 38px;
 }
+
 .header-block .title-h2 {
   font-size: 36px;
   color: #2c3e50;
@@ -45,6 +46,7 @@ body {
   font-size: 36px;
   color: #2c3e50;
 }
+
 .total-score p {
   margin-right: 12px;
 }
@@ -69,6 +71,7 @@ body {
   margin-bottom: 16px;
   cursor: pointer;
 }
+
 @media only screen and (min-width: 1025px) {
   .list-items:hover .list-origin {
     opacity: 0.7;
@@ -99,8 +102,9 @@ body {
   height: 34px;
   position: relative;
 }
+
 .form-holder:after {
-  content: "";
+  content: '';
   position: absolute;
   background-size: contain;
   background-position: center;
@@ -112,17 +116,53 @@ body {
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
 }
+
 .form-holder.is-correct:after {
   background-image: url(../img/icon-check.svg);
 }
+
 .form-holder.is-wrong:after {
   background-image: url(../img/icon-wrong.svg);
 }
+
 .form-holder.is-wrong .form-control {
   border: 1px solid #e74c3c;
 }
+
 .form-holder.is-empty .form-control {
   border: 1px solid #e74c3c;
+}
+
+.form-holder .tool-tip {
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  -webkit-transform: translate(calc(100% + 45px), -50%);
+          transform: translate(calc(100% + 45px), -50%);
+  font-size: 18px;
+  border: 1px solid #e67e22;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #e67e22;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-align: center;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.form-holder .tool-tip:after {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  border: 8px solid #e67e22;
+  -webkit-transform: rotate(45deg) translate(-10%, -55%);
+          transform: rotate(45deg) translate(-10%, -55%);
+  border-right-color: transparent;
+  border-top-color: transparent;
 }
 
 .form-control {
@@ -136,6 +176,7 @@ body {
   font-size: 18px;
   line-height: 1.25;
 }
+
 .form-control:focus {
   border: 1px solid #7f8c8d;
 }
@@ -172,9 +213,11 @@ body {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 @media only screen and (min-width: 1025px) {
   .btn-check:hover {
     background-color: #0a8a40;
     border: 2px solid #0a8a40;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */
