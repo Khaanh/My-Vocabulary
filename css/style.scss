@@ -130,12 +130,14 @@ body {
   &.is-correct {
     &:after {
       background-image: url(../img/icon-check.svg);
+      cursor: pointer;
     }
   }
 
   &.is-wrong {
     &:after {
       background-image: url(../img/icon-wrong.svg);
+      cursor: pointer;
     }
 
     .form-control {
@@ -212,10 +214,21 @@ body {
   z-index: 100;
 }
 
+// body
+
+// footer
+.body-footer {}
+
+.footer-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-check {
   display: block;
-  margin: 0 auto;
-  max-width: 280px;
+  margin: 0 24px;
+  max-width: 240px;
   width: 100%;
   padding: 12px;
   border-radius: 50px;
@@ -236,4 +249,26 @@ body {
   }
 }
 
-// body
+.btn-reset {
+  display: block;
+  margin: 0 24px;
+  max-width: 200px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 50px;
+  background-color: #95a5a6;
+  border: 2px solid #95a5a6;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  font-size: 24px;
+  line-height: 1.25;
+  transition: 0.3s ease;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      background-color: #7f8c8d;
+      border: 2px solid #7f8c8d;
+    }
+  }
+}
