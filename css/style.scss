@@ -6,6 +6,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .is-hidden {
@@ -17,6 +18,25 @@ body {
   width: 100%;
   padding: 0 10px;
   margin: 68px auto;
+}
+
+// button
+button {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  line-height: 1.26;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  margin: 0 8px;
+  position: relative;
+
+  i {
+    font-style: normal;
+  }
 }
 
 // header
@@ -63,6 +83,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: row;
   margin-bottom: 32px;
   cursor: pointer;
 
@@ -231,7 +252,7 @@ body {
   max-width: 240px;
   width: 100%;
   padding: 12px;
-  border-radius: 50px;
+  border-radius: 6px;
   background-color: #27ae60;
   border: 2px solid #27ae60;
   color: #fff;
@@ -247,6 +268,12 @@ body {
       border: 2px solid #0a8a40;
     }
   }
+
+  &:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    pointer-events: none;
+  }
 }
 
 .btn-reset {
@@ -255,9 +282,9 @@ body {
   max-width: 200px;
   width: 100%;
   padding: 12px;
-  border-radius: 50px;
-  background-color: #95a5a6;
-  border: 2px solid #95a5a6;
+  border-radius: 6px;
+  background-color: #343a40;
+  border: 2px solid #343a40;
   color: #fff;
   cursor: pointer;
   outline: none;
@@ -267,8 +294,8 @@ body {
 
   &:hover {
     @media only screen and (min-width: 1025px) {
-      background-color: #7f8c8d;
-      border: 2px solid #7f8c8d;
+      background-color: #23272b;
+      border: 2px solid #1d2124;
     }
   }
 }

@@ -6,7 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/modal.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+
   <title>My Vocabulary</title>
 </head>
 
@@ -32,6 +37,38 @@
         <button type="button" class="btn-reset" id="js-btnReset">Reset</button>
       </div>
     </section>
+  </div>
+
+  <!--Modal for new words -->
+  <div class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-wrapper">
+      <div class="modal-heading">
+        <h2 class="modal-title">Enter your words, please</h2>
+        <h3 class="modal-subtitle">Word count: <span id="js-wordCound">100</span></h3>
+      </div>
+      <div class="modal-holder">
+        <form class="modal-form">
+          <div class="modal-inner">
+            <label class="modal-block">
+              <span class="modal-label">Orign:</span>
+              <input type="text" class="modal-control" id="js-newOrigin" placeholder="origin">
+            </label>
+            <label class="modal-block">
+              <span class="modal-label">Translate & synonyms:</span>
+              <input type="text" class="modal-control" id="js-newTranslate"
+                placeholder="translate, translate, translate">
+            </label>
+          </div>
+        </form>
+        <div class="modal-buttons">
+          <button type="button" class="btn-more" id="js-btnMore">More <i>...</i></button>
+          <button type="button" class="btn-start" id="js-btnStart">Lets start <i class="excl-mark is-hidden">!</i>
+            <i class="quest-mark">?</i></button>
+          <button type="button" class="btn-remove" id="js-btnRemoveLast">Remove last word <i>X</i></button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="./js/index.js"></script>
