@@ -242,12 +242,44 @@ let btnRemove = document.querySelector('#js-btnRemoveLast');
 let newOrigin = document.querySelector('#js-newOrigin');
 let newTranslate = document.querySelector('#js-newTranslate');
 
+// VALUES
+let originValue = newOrigin.value;
+let translateValue = newTranslate.value;
+
+// ARR & OBJ
 let newArr = [];
 
-btnMore.addEventListener('click', function () {
-	let origin = newOrigin.value;
-	let translate = newTranslate.value;
+// BUTTON ADD MORE NEW WORDS & TRANSLATES
+btnMore.addEventListener('click', addNewWord)
 
-	console.info('origin: ', origin);
-	console.info('translate: ', translate)
-})
+// FUNCTION ADD NEW WORDS WITH TRANSLATES TO ARR
+function addNewWord() {
+	originValue = newOrigin.value;
+	translateValue = newTranslate.value;
+
+	for (let i = 0; i < newArr.length; i++) {
+		console.log('newArr[i]', newArr[i]);
+
+		if (newArr[i]) {
+			
+		}
+		// newArr[i]
+	}
+	/**
+	 * ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR.
+	 * ! CHECK FOR AN EMPTY STRING.
+	 * ! SAVE TO LOCAL STORAGE.
+	 */
+	
+	console.info('origin: ', originValue);
+	console.info('translate: ', translateValue);
+	
+	newArr.push({
+		origin: `${originValue}`,
+		translates: `${translateValue}`,
+	})
+	
+	newOrigin.value = '';
+	newTranslate.value = '';
+	console.log('New Arr: ', newArr);
+}
