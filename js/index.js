@@ -243,52 +243,56 @@ let newOrigin = document.querySelector('#js-newOrigin');
 let newTranslate = document.querySelector('#js-newTranslate');
 
 // VALUES
-let originValue = newOrigin.value;
-let translateValue = newTranslate.value;
+// let originValue = newOrigin.value;
+// let translateValue = newTranslate.value;
 
 // ARR & OBJ
-let newArr = [];
+let newWords = [];
+let filteredWords = [];
 
 // BUTTON ADD MORE NEW WORDS & TRANSLATES
 btnMore.addEventListener('click', addNewWord)
 
-// FUNCTION ADD NEW WORDS WITH TRANSLATES TO ARR
-function addNewWord() {
-	originValue = newOrigin.value;
-	translateValue = newTranslate.value;
-
-	// for (let i = 0; i < newArr.length; i++) {
-	// 	console.log('newArr[i]', newArr[i]);
-	// }
-
-	newArr.forEach(obj => {
-		console.log('object:', obj);
-		let a = obj.origin;
-		let b = obj.translates;
-		console.log('a: ', a, 'b: ', b);
-		return obj
-	})
-
-	let filterArr = newArr.filter(obj => {
-		return obj.origin < 10
-	})
-
-	console.log('filterArr', filterArr);
 	/**
 	 * ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR.
 	 * ! CHECK FOR AN EMPTY STRING.
 	 * ! SAVE TO LOCAL STORAGE.
 	 */
+
+// FUNCTION ADD NEW WORDS WITH TRANSLATES TO ARR
+function addNewWord() {
+	let originValue = newOrigin.value;
+	let translateValue = newTranslate.value;
+	// console.log('originValue', originValue);
 	
-	console.info('origin: ', originValue);
-	console.info('translate: ', translateValue);
-	
-	newArr.push({
-		origin: `${originValue}`,
-		translates: `${translateValue}`,
+	let word = newWords.find(item => {
+		// console.log('item', originValue == item.origin);
+		// console.log('item.origin:', item.origin);
+		// return (originValue == item.origin) ? true : false;
+		return originValue == item.origin
 	})
-	
+
+	console.log('word', word);
+	newWords.push(
+		{
+			origin: originValue,
+			translate: translateValue,
+		}
+	)
+
+	if (word) {
+		console.log('undefined');
+	} else {
+		console.log('!!!!undefined!!!!');
+	}
+
 	newOrigin.value = '';
 	newTranslate.value = '';
-	console.log('New Arr: ', newArr);
+	console.log('New Arr: ', newWords);
+
 }
+
+// arr.find(item => {
+// 	console.log(item == arr[i].origin);
+// 	return item == arr[i].origin
+// })
