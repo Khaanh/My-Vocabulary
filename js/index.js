@@ -257,14 +257,23 @@ function addNewWord() {
 	originValue = newOrigin.value;
 	translateValue = newTranslate.value;
 
-	for (let i = 0; i < newArr.length; i++) {
-		console.log('newArr[i]', newArr[i]);
+	// for (let i = 0; i < newArr.length; i++) {
+	// 	console.log('newArr[i]', newArr[i]);
+	// }
 
-		if (newArr[i]) {
-			
-		}
-		// newArr[i]
-	}
+	newArr.forEach(obj => {
+		console.log('object:', obj);
+		let a = obj.origin;
+		let b = obj.translates;
+		console.log('a: ', a, 'b: ', b);
+		return obj
+	})
+
+	let filterArr = newArr.filter(obj => {
+		return obj.origin < 10
+	})
+
+	console.log('filterArr', filterArr);
 	/**
 	 * ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR.
 	 * ! CHECK FOR AN EMPTY STRING.
