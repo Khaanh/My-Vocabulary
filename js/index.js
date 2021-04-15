@@ -241,10 +241,11 @@ let btnStart = document.querySelector('#js-btnStart');
 let btnRemove = document.querySelector('#js-btnRemoveLast');
 let newOrigin = document.querySelector('#js-newOrigin');
 let newTranslate = document.querySelector('#js-newTranslate');
+let newWordCount = document.querySelector('#js-wordCound');
 
 // VALUES
-// let originValue = newOrigin.value;
-// let translateValue = newTranslate.value;
+let originValue = newOrigin.value;
+let translateValue = newTranslate.value;
 
 // ARR & OBJ
 let newWords = [];
@@ -252,47 +253,55 @@ let filteredWords = [];
 
 // BUTTON ADD MORE NEW WORDS & TRANSLATES
 btnMore.addEventListener('click', addNewWord)
-
-	/**
-	 * ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR.
-	 * ! CHECK FOR AN EMPTY STRING.
-	 * ! SAVE TO LOCAL STORAGE.
-	 */
+/**
+* ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
+* ! CHECK FOR AN EMPTY STRING.
+* ! SAVE TO LOCAL STORAGE.
+*/
 
 // FUNCTION ADD NEW WORDS WITH TRANSLATES TO ARR
 function addNewWord() {
-	let originValue = newOrigin.value;
-	let translateValue = newTranslate.value;
-	// console.log('originValue', originValue);
+	originValue = newOrigin.value;
+	translateValue = newTranslate.value;
 	
+	// CHECK FOR AN EXISTING BEFORE ADD
 	let word = newWords.find(item => {
-		// console.log('item', originValue == item.origin);
-		// console.log('item.origin:', item.origin);
-		// return (originValue == item.origin) ? true : false;
-		return originValue == item.origin
+		return originValue == item.origin;
 	})
-
+	
 	console.log('word', word);
-	newWords.push(
-		{
+	
+	if (!word) {
+		newWords.push({
 			origin: originValue,
 			translate: translateValue,
-		}
-	)
-
-	if (word) {
-		console.log('undefined');
+		})
+		
+		newOrigin.parentElement.classList.add('is-added');
+		newTranslate.parentElement.classList.add('is-added');
+		
+		setTimeout(() => {
+			newOrigin.parentElement.classList.remove('is-added');
+			newTranslate.parentElement.classList.remove('is-added');
+		}, 500)
+		
+		newOrigin.value = '';
+		newTranslate.value = '';
+		
+		newOrigin.parentElement.classList.remove('is-error');
+		newTranslate.parentElement.classList.remove('is-error');
 	} else {
-		console.log('!!!!undefined!!!!');
+		newOrigin.parentElement.classList.add('is-error');
+		newTranslate.parentElement.classList.add('is-error');
 	}
-
-	newOrigin.value = '';
-	newTranslate.value = '';
+	
 	console.log('New Arr: ', newWords);
-
+	
+	showCountNewWords(newWords)
 }
 
-// arr.find(item => {
-// 	console.log(item == arr[i].origin);
-// 	return item == arr[i].origin
-// })
+
+// FUNCTION SHOW COUNT OF NEW WORDS
+function showCountNewWords(arr) {
+	return newWordCount.textContent = arr.length;
+}

@@ -45,7 +45,7 @@
     <div class="modal-wrapper">
       <div class="modal-heading">
         <h2 class="modal-title">Enter your words, please</h2>
-        <h3 class="modal-subtitle">Word count: <span id="js-wordCound">100</span></h3>
+        <h3 class="modal-subtitle">Word count: <span id="js-wordCound"></span></h3>
       </div>
       <div class="modal-holder">
         <form class="modal-form">
@@ -53,11 +53,13 @@
             <label class="modal-block">
               <span class="modal-label">Orign:</span>
               <input type="text" class="modal-control" id="js-newOrigin" placeholder="origin">
+              <small>The word already exists</small>
             </label>
             <label class="modal-block">
               <span class="modal-label">Translate & synonyms:</span>
               <input type="text" class="modal-control" id="js-newTranslate"
                 placeholder="translate, translate, translate">
+              <small>The word already exists</small>
             </label>
           </div>
         </form>
