@@ -1,7 +1,7 @@
 /**
 * 11/04/21
 * TODO : Add button reset; +
-* TODO : Modal with new words;
+* TODO : Modal with new words; +
 * TODO : Loading screen;
 */
 
@@ -96,6 +96,8 @@ btnCheck.addEventListener('click', function() {
 	iconForHelp = document.querySelectorAll('.icon-empty');
 	showTooltTips(iconForHelp);
 	showCorrectAnswers(isWrongAnswer);
+
+	totalAnswers.textContent = inputValues.length > 0 ? `/${inputValues.length}` : '/ 0';
 });
 
 // BUTTON RESET ALL
@@ -236,9 +238,9 @@ function manipulateParentElem(self, icon, translate) {
 
 // ======================================================================================
 /**
-* TODO CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
-* TODO CHECK FOR AN EMPTY STRING. +
-* TODO SAVE TO LOCAL STORAGE.
+* TODO : CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
+* TODO : CHECK FOR AN EMPTY STRING. +
+* TODO : SAVE TO LOCAL STORAGE.
 * ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
 */
 // SELECTORS
@@ -249,6 +251,7 @@ let newOrigin = document.querySelector('#js-newOrigin');
 let newTranslate = document.querySelector('#js-newTranslate');
 let newWordCount = document.querySelector('#js-wordCound');
 let removedWord = document.querySelector('#js-removedWord');
+let modal = document.querySelector('#js-modal');
 
 // VALUES
 let originValue = newOrigin.value;
@@ -264,7 +267,7 @@ let translateValueArr = [];
 btnMore.addEventListener('click', addNewWord)
 
 // BUTTON LETS START
-btnStart.addEventListener('click', () => {})
+btnStart.addEventListener('click', letStart)
 
 // BUTTON REMOVE LAST WORD
 btnRemove.addEventListener('click', removeLast)
@@ -272,7 +275,6 @@ btnRemove.addEventListener('click', removeLast)
 
 // FUNCTION REMOVE LAST WORD FROM LIST
 function removeLast() {
-	// let lastWord = newWords[newWords.length - 1].origin;
 	let lastWord = newWords.splice([newWords.length - 1], 1);
 	
 	removedWord.textContent = lastWord[0].origin;
@@ -346,6 +348,33 @@ function addNewWord() {
 	showCountNewWords(newWords)
 }
 
+// FUNCTION CLOSE MODAL & START TEST
+function letStart() {
+	newWords.forEach((item) => {
+		createList(item.origin, item.translate);
+	});
+	
+	// FUNCTION TO CREATE LIST WITH TWO PARAMS
+	function createList(origin, translate) {
+		let li = document.createElement('label');
+		
+		li.classList.add('list-items');
+		li.innerHTML = `<span class="list-origin" data-translate="${translate}">${origin}</span>
+		<div class="form-holder">
+		<input type="text" class="form-control">
+		</div>`;
+		
+		holderWords.appendChild(li);
+		
+		// AFTER CREATED ALL LIST, SELECT IT TO GET VALUES
+		inputValues = document.querySelectorAll('.form-control');
+	}
+
+	modal.classList.add('go-up');
+	modal.addEventListener('animationend', ()=> {
+		modal.classList.add('is-hidden')
+	})
+}
 
 // FUNCTION SHOW COUNT OF NEW WORDS
 function showCountNewWords(arr) {

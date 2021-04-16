@@ -11,7 +11,11 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, .48);
-  transition: all .3s ease-in;
+  transition: all .4s ease-in;
+
+  &.go-up {
+    top: -100%;
+  }
 }
 
 .modal-overlay {}
