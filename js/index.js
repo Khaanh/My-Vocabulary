@@ -255,26 +255,34 @@ let filteredWords = [];
 btnMore.addEventListener('click', addNewWord)
 /**
 * ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
-* ! CHECK FOR AN EMPTY STRING.
+* ! CHECK FOR AN EMPTY STRING. +
 * ! SAVE TO LOCAL STORAGE.
+* ! MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
 */
 
 // FUNCTION ADD NEW WORDS WITH TRANSLATES TO ARR
 function addNewWord() {
-	originValue = newOrigin.value;
-	translateValue = newTranslate.value;
-	
+	originValue = newOrigin.value.trim();
+	translateValue = newTranslate.value.trim();
+	let translateArr = translateValue.split(',');
+
+
+	let translateValueArr = translateArr.map(item => {
+		return item.trim();
+	})
+
 	// CHECK FOR AN EXISTING BEFORE ADD
 	let word = newWords.find(item => {
 		return originValue == item.origin;
 	})
 	
-	console.log('word', word);
+	// console.log('word', word);
 	
-	if (!word) {
+	if (!word && originValue != '' && translateValue != '') {
+
 		newWords.push({
 			origin: originValue,
-			translate: translateValue,
+			translate: translateValueArr,
 		})
 		
 		newOrigin.parentElement.classList.add('is-added');
@@ -290,7 +298,9 @@ function addNewWord() {
 		
 		newOrigin.parentElement.classList.remove('is-error');
 		newTranslate.parentElement.classList.remove('is-error');
+		
 	} else {
+
 		newOrigin.parentElement.classList.add('is-error');
 		newTranslate.parentElement.classList.add('is-error');
 	}
