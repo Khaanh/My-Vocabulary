@@ -6,6 +6,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .is-hidden {
@@ -17,6 +18,31 @@ body {
   width: 100%;
   padding: 0 10px;
   margin: 68px auto;
+}
+
+// button
+button {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  line-height: 1.26;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  margin: 0 8px;
+  position: relative;
+
+  i {
+    font-style: normal;
+  }
+
+  &:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    pointer-events: none;
+  }
 }
 
 // header
@@ -63,6 +89,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: row;
   margin-bottom: 32px;
   cursor: pointer;
 
@@ -130,12 +157,14 @@ body {
   &.is-correct {
     &:after {
       background-image: url(../img/icon-check.svg);
+      cursor: pointer;
     }
   }
 
   &.is-wrong {
     &:after {
       background-image: url(../img/icon-wrong.svg);
+      cursor: pointer;
     }
 
     .form-control {
@@ -212,13 +241,24 @@ body {
   z-index: 100;
 }
 
+// body
+
+// footer
+.body-footer {}
+
+.footer-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-check {
   display: block;
-  margin: 0 auto;
-  max-width: 280px;
+  margin: 0 24px;
+  max-width: 240px;
   width: 100%;
   padding: 12px;
-  border-radius: 50px;
+  border-radius: 6px;
   background-color: #27ae60;
   border: 2px solid #27ae60;
   color: #fff;
@@ -234,6 +274,34 @@ body {
       border: 2px solid #0a8a40;
     }
   }
+
+  &:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    pointer-events: none;
+  }
 }
 
-// body
+.btn-reset {
+  display: block;
+  margin: 0 24px;
+  max-width: 200px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #343a40;
+  border: 2px solid #343a40;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  font-size: 24px;
+  line-height: 1.25;
+  transition: 0.3s ease;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      background-color: #23272b;
+      border: 2px solid #1d2124;
+    }
+  }
+}
