@@ -235,6 +235,12 @@ function manipulateParentElem(self, icon, translate) {
 
 
 // ======================================================================================
+/**
+* TODO CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
+* TODO CHECK FOR AN EMPTY STRING. +
+* TODO SAVE TO LOCAL STORAGE.
+* ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
+*/
 // SELECTORS
 let btnMore = document.querySelector('#js-btnMore');
 let btnStart = document.querySelector('#js-btnStart');
@@ -242,6 +248,7 @@ let btnRemove = document.querySelector('#js-btnRemoveLast');
 let newOrigin = document.querySelector('#js-newOrigin');
 let newTranslate = document.querySelector('#js-newTranslate');
 let newWordCount = document.querySelector('#js-wordCound');
+let removedWord = document.querySelector('#js-removedWord');
 
 // VALUES
 let originValue = newOrigin.value;
@@ -250,36 +257,60 @@ let translateValue = newTranslate.value;
 // ARR & OBJ
 let newWords = [];
 let filteredWords = [];
+let translateArr = [];
+let translateValueArr = [];
 
 // BUTTON ADD MORE NEW WORDS & TRANSLATES
 btnMore.addEventListener('click', addNewWord)
-/**
-* ! CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
-* ! CHECK FOR AN EMPTY STRING. +
-* ! SAVE TO LOCAL STORAGE.
-* ! MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
-*/
+
+// BUTTON LETS START
+btnStart.addEventListener('click', () => {})
+
+// BUTTON REMOVE LAST WORD
+btnRemove.addEventListener('click', removeLast)
+
+
+// FUNCTION REMOVE LAST WORD FROM LIST
+function removeLast() {
+	// let lastWord = newWords[newWords.length - 1].origin;
+	let lastWord = newWords.splice([newWords.length - 1], 1);
+	
+	removedWord.textContent = lastWord[0].origin;
+	removedWord.classList.add('is-animate');
+	
+	removedWord.addEventListener('animationend', () => {
+		removedWord.classList.remove('is-animate');
+	})
+	
+	showCountNewWords(newWords);
+	
+	if (!newWords.length) {
+		btnStart.disabled = true;
+		btnRemove.disabled = true;
+	}
+	
+	console.log('lastWord', lastWord[0].origin);
+	console.log(newWords);
+}
 
 // FUNCTION ADD NEW WORDS WITH TRANSLATES TO ARR
 function addNewWord() {
 	originValue = newOrigin.value.trim();
 	translateValue = newTranslate.value.trim();
-	let translateArr = translateValue.split(',');
-
-
-	let translateValueArr = translateArr.map(item => {
+	translateArr = translateValue.split(',');
+	
+	
+	translateValueArr = translateArr.map(item => {
 		return item.trim();
 	})
-
+	
 	// CHECK FOR AN EXISTING BEFORE ADD
 	let word = newWords.find(item => {
 		return originValue == item.origin;
 	})
 	
-	// console.log('word', word);
-	
 	if (!word && originValue != '' && translateValue != '') {
-
+		
 		newWords.push({
 			origin: originValue,
 			translate: translateValueArr,
@@ -300,12 +331,17 @@ function addNewWord() {
 		newTranslate.parentElement.classList.remove('is-error');
 		
 	} else {
-
+		
 		newOrigin.parentElement.classList.add('is-error');
 		newTranslate.parentElement.classList.add('is-error');
 	}
 	
 	console.log('New Arr: ', newWords);
+	
+	if (newWords.length) {
+		btnStart.disabled = false;
+		btnRemove.disabled = false;
+	}
 	
 	showCountNewWords(newWords)
 }

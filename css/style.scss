@@ -37,6 +37,12 @@ button {
   i {
     font-style: normal;
   }
+
+  &:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    pointer-events: none;
+  }
 }
 
 // header
