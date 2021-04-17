@@ -1,9 +1,9 @@
 /**
-* 11/04/21
-* TODO : Add button reset; +
-* TODO : Modal with new words; +
-* TODO : Loading screen;
-*/
+ * 11/04/21
+ * TODO : Add button reset; +
+ * TODO : Modal with new words; +
+ * TODO : Loading screen;
+ */
 
 let holderWords = document.querySelector('#js-holderWords');
 let correctAnswers = document.querySelector('#js-correctAnswers');
@@ -59,28 +59,31 @@ wordsArray.forEach((item) => {
 // FUNCTION TO CREATE LIST WITH TWO PARAMS
 function createList(origin, translate) {
 	let li = document.createElement('label');
-	
+
 	li.classList.add('list-items');
 	li.innerHTML = `<span class="list-origin" data-translate="${translate}">${origin}</span>
 	<div class="form-holder">
 	<input type="text" class="form-control">
 	</div>`;
-	
+
 	holderWords.appendChild(li);
-	
+
 	// AFTER CREATED ALL LIST, SELECT IT TO GET VALUES
 	inputValues = document.querySelectorAll('.form-control');
 }
 
 // BUTTON TO CHECK VALUES
-btnCheck.addEventListener('click', function() {
+btnCheck.addEventListener('click', function () {
 	let arrValues = [...inputValues];
 	let isCorrectAnswer = [];
 	let isWrongAnswer = [];
 	let isEmptyAnswer = [];
-	
+
 	for (let i = 0; i < arrValues.length; i++) {
-		if (getTranslates(arrValues[i]) === arrValues[i].value.trim().toLowerCase()) {
+		if (
+			getTranslates(arrValues[i]) === arrValues[i].value.trim().toLowerCase() ||
+			getTranslates(arrValues[i]).includes(arrValues[i].value.trim().toLowerCase())
+		) {
 			isCorrectAnswer.push(arrValues[i]);
 		} else if (arrValues[i].value.trim() == '' || arrValues[i].value == '[no answer]') {
 			isEmptyAnswer.push(arrValues[i]);
@@ -88,9 +91,11 @@ btnCheck.addEventListener('click', function() {
 			isWrongAnswer.push(arrValues[i]);
 		}
 	}
-	
+
+	console.log('Result: ', getTranslates(arrValues[arrValues.length - 1]).includes('zz'));
+	console.log('Result: ', getTranslates(arrValues[arrValues.length - 1]));
+
 	this.disabled = true;
-	// console.log(isEmptyAnswer);
 	displayScore(isCorrectAnswer);
 	addMarks(isCorrectAnswer, isWrongAnswer, isEmptyAnswer);
 	iconForHelp = document.querySelectorAll('.icon-empty');
@@ -110,23 +115,23 @@ btnReset.addEventListener('click', () => {
 // FUNCTION RESET ALL INPUT VALUES AND STATES
 function resetValuesAndStates() {
 	let arrForReset = inputValues;
-	
+
 	for (let i = 0; i < arrForReset.length; i++) {
 		if (arrForReset[i].parentElement.classList.contains('is-correct')) {
 			arrForReset[i].parentElement.classList.remove('is-correct');
 		}
-		
+
 		if (arrForReset[i].parentElement.classList.contains('is-wrong')) {
 			arrForReset[i].parentElement.classList.remove('is-wrong');
 			arrForReset[i].nextElementSibling.remove();
 		}
-		
+
 		if (arrForReset[i].parentElement.classList.contains('is-empty')) {
 			arrForReset[i].parentElement.classList.remove('is-empty');
 			arrForReset[i].nextElementSibling.remove();
 			arrForReset[i].previousElementSibling.remove();
 		}
-		
+
 		arrForReset[i].value = '';
 		arrForReset[i].disabled = false;
 	}
@@ -134,7 +139,8 @@ function resetValuesAndStates() {
 
 // FUNCTION TAKE CLOSEST ORIGIN WORD & RETURN TRANSLATE
 function getTranslates(el) {
-	return el.parentElement.previousElementSibling.dataset.translate;
+	let synonyms = el.parentElement.previousElementSibling.dataset.translate.split(',');
+	return synonyms;
 }
 
 // FUNCTION ADD MARKS RELEVANT ANSWERS
@@ -143,16 +149,16 @@ function addMarks(correct, wrong, empty) {
 		item.disabled = true;
 		item.parentElement.classList.add('is-correct');
 	});
-	
+
 	wrong.forEach((item) => {
 		item.disabled = true;
 		item.parentElement.classList.add('is-wrong');
 	});
-	
+
 	empty.forEach((item) => {
 		let iconEmpty = createIconEmpty();
 		let translates = createTagTranslate.call(item);
-		
+
 		item.value = '[no answer]';
 		item.disabled = true;
 		manipulateParentElem(item, iconEmpty, translates);
@@ -191,7 +197,7 @@ function createTagTranslate() {
 function createTagForCorrectAnswers(value) {
 	let showAnswer = document.createElement('span');
 	showAnswer.classList.add('show-answer');
-	
+
 	showAnswer.textContent = value.parentElement.previousElementSibling.dataset.translate;
 	return showAnswer;
 }
@@ -201,7 +207,7 @@ function showTooltTips(nodeList) {
 	let arr = [...nodeList];
 	let span = document.createElement('span');
 	span.classList.add('tool-tip');
-	
+
 	for (let i = 0; i < arr.length; i++) {
 		arr[i].addEventListener('mouseenter', function () {
 			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
@@ -209,7 +215,7 @@ function showTooltTips(nodeList) {
 			right: -16px;
 			`;
 		});
-		
+
 		arr[i].addEventListener('mouseleave', function () {
 			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
 			opacity: 0;
@@ -233,16 +239,13 @@ function manipulateParentElem(self, icon, translate) {
 	self.parentElement.prepend(translate);
 }
 
-
-
-
 // ======================================================================================
 /**
-* TODO : CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
-* TODO : CHECK FOR AN EMPTY STRING. +
-* TODO : SAVE TO LOCAL STORAGE.
-* ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
-*/
+ * TODO : CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
+ * TODO : CHECK FOR AN EMPTY STRING. +
+ * TODO : SAVE TO LOCAL STORAGE.
+ * ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
+ */
 // SELECTORS
 let btnMore = document.querySelector('#js-btnMore');
 let btnStart = document.querySelector('#js-btnStart');
@@ -264,33 +267,32 @@ let translateArr = [];
 let translateValueArr = [];
 
 // BUTTON ADD MORE NEW WORDS & TRANSLATES
-btnMore.addEventListener('click', addNewWord)
+btnMore.addEventListener('click', addNewWord);
 
 // BUTTON LETS START
-btnStart.addEventListener('click', letStart)
+btnStart.addEventListener('click', letStart);
 
 // BUTTON REMOVE LAST WORD
-btnRemove.addEventListener('click', removeLast)
-
+btnRemove.addEventListener('click', removeLast);
 
 // FUNCTION REMOVE LAST WORD FROM LIST
 function removeLast() {
 	let lastWord = newWords.splice([newWords.length - 1], 1);
-	
+
 	removedWord.textContent = lastWord[0].origin;
 	removedWord.classList.add('is-animate');
-	
+
 	removedWord.addEventListener('animationend', () => {
 		removedWord.classList.remove('is-animate');
-	})
-	
+	});
+
 	showCountNewWords(newWords);
-	
+
 	if (!newWords.length) {
 		btnStart.disabled = true;
 		btnRemove.disabled = true;
 	}
-	
+
 	console.log('lastWord', lastWord[0].origin);
 	console.log(newWords);
 }
@@ -300,52 +302,48 @@ function addNewWord() {
 	originValue = newOrigin.value.trim();
 	translateValue = newTranslate.value.trim();
 	translateArr = translateValue.split(',');
-	
-	
-	translateValueArr = translateArr.map(item => {
+
+	translateValueArr = translateArr.map((item) => {
 		return item.trim();
-	})
-	
+	});
+
 	// CHECK FOR AN EXISTING BEFORE ADD
-	let word = newWords.find(item => {
+	let word = newWords.find((item) => {
 		return originValue == item.origin;
-	})
-	
+	});
+
 	if (!word && originValue != '' && translateValue != '') {
-		
 		newWords.push({
 			origin: originValue,
 			translate: translateValueArr,
-		})
-		
+		});
+
 		newOrigin.parentElement.classList.add('is-added');
 		newTranslate.parentElement.classList.add('is-added');
-		
+
 		setTimeout(() => {
 			newOrigin.parentElement.classList.remove('is-added');
 			newTranslate.parentElement.classList.remove('is-added');
-		}, 500)
-		
+		}, 500);
+
 		newOrigin.value = '';
 		newTranslate.value = '';
-		
+
 		newOrigin.parentElement.classList.remove('is-error');
 		newTranslate.parentElement.classList.remove('is-error');
-		
 	} else {
-		
 		newOrigin.parentElement.classList.add('is-error');
 		newTranslate.parentElement.classList.add('is-error');
 	}
-	
+
 	console.log('New Arr: ', newWords);
-	
+
 	if (newWords.length) {
 		btnStart.disabled = false;
 		btnRemove.disabled = false;
 	}
-	
-	showCountNewWords(newWords)
+
+	showCountNewWords(newWords);
 }
 
 // FUNCTION CLOSE MODAL & START TEST
@@ -353,30 +351,41 @@ function letStart() {
 	newWords.forEach((item) => {
 		createList(item.origin, item.translate);
 	});
-	
+
 	// FUNCTION TO CREATE LIST WITH TWO PARAMS
 	function createList(origin, translate) {
 		let li = document.createElement('label');
-		
+
 		li.classList.add('list-items');
 		li.innerHTML = `<span class="list-origin" data-translate="${translate}">${origin}</span>
 		<div class="form-holder">
 		<input type="text" class="form-control">
 		</div>`;
-		
+
 		holderWords.appendChild(li);
-		
+
 		// AFTER CREATED ALL LIST, SELECT IT TO GET VALUES
 		inputValues = document.querySelectorAll('.form-control');
 	}
 
 	modal.classList.add('go-up');
-	modal.addEventListener('animationend', ()=> {
-		modal.classList.add('is-hidden')
-	})
+	modal.addEventListener('animationend', () => {
+		modal.classList.add('is-hidden');
+	});
 }
 
 // FUNCTION SHOW COUNT OF NEW WORDS
 function showCountNewWords(arr) {
-	return newWordCount.textContent = arr.length;
+	return (newWordCount.textContent = arr.length);
 }
+
+function f1() {
+	let arr = ['aa', 'bb', 'cc', 'zz', 123, 52];
+
+	let result = arr.includes('aa');
+	console.log('result:', result);
+
+	console.log('f1()');
+}
+
+f1();
