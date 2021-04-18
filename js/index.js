@@ -6,7 +6,7 @@
  * 18/04/21
  * TODO : CHECK NEW USERS;
  * TODO : SAVE TO LOCAL STORAGE;
- * TODO : UI/UX ALL BUTTONS;
+ * TODO : UI/UX ALL BUTTONS; +
  * TODO : SPLIT TO MODULES;
  * TODO : REMOVE RED BORDER AFTER FOCUS;
  * TODO : SAVE == "ENTER";
@@ -385,3 +385,21 @@ function letStart() {
 function showCountNewWords(arr) {
 	return (newWordCount.textContent = arr.length);
 }
+
+// ======================================================================================
+/**
+ * 19/24/21
+ */
+
+function checkNewUsers() {
+	document.addEventListener('DOMContentLoaded', () => {
+		let newUser = localStorage.getItem('newUser');
+
+		if (newUser) {
+			modal.classList.add('is-hidden');
+		} else {
+			localStorage.setItem('newUser', true);
+		}
+	});
+}
+checkNewUsers();
