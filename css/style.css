@@ -27,12 +27,15 @@ button {
   line-height: 1.26;
   font-weight: 600;
   color: #fff;
+  background-color: transparent;
   padding: 10px 22px;
   border-radius: 6px;
   outline: none;
   cursor: pointer;
   margin: 0 8px;
   position: relative;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
 button i {
   font-style: normal;

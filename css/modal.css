@@ -203,16 +203,22 @@
   border: 1px solid #007bff;
   background-color: #007bff;
   margin: 0 12px 16px;
+  padding: 10px 32px 10px 16px;
 }
 .btn-more i {
   letter-spacing: 0px;
-  -webkit-transition: 0.3s linear;
-  transition: 0.3s linear;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
   position: absolute;
+  left: 70%;
+  bottom: 10px;
 }
 @media only screen and (min-width: 1025px) {
+  .btn-more:hover {
+    background-color: #1988ff;
+  }
   .btn-more:hover i {
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.4rem;
   }
 }
 
@@ -220,11 +226,78 @@
   border: 1px solid #28a745;
   background-color: #28a745;
   margin: 0 12px 16px;
+  overflow: hidden;
+}
+.btn-start i {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+.btn-start .excl-mark {
+  -webkit-transform: translate(0, 50px);
+          transform: translate(0, 50px);
+}
+@media only screen and (min-width: 1025px) {
+  .btn-start:hover {
+    background-color: #23bb46;
+  }
+  .btn-start:hover .excl-mark {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  .btn-start:hover .quest-mark {
+    -webkit-transform: translate(0, -50px);
+            transform: translate(0, -50px);
+  }
 }
 
 .btn-remove {
   border: 1px solid #dc3545;
   background-color: #dc3545;
+  padding: 10px 36px 10px 22px;
+}
+.btn-remove i {
+  display: block;
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translate(0, -50%) rotate(0);
+          transform: translate(0, -50%) rotate(0);
+  background-image: url(../img/icon-clear.svg);
+  background-size: contain;
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
+}
+.btn-remove:after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 0%;
+  height: 2px;
+  left: 12px;
+  top: 54%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+@media only screen and (min-width: 1025px) {
+  .btn-remove:hover {
+    background-color: #c32e3c;
+  }
+  .btn-remove:hover i {
+    -webkit-transform: translate(0, -50%) rotate(90deg);
+            transform: translate(0, -50%) rotate(90deg);
+  }
+  .btn-remove:hover:after {
+    width: 85%;
+  }
 }
 
 @-webkit-keyframes removed {
