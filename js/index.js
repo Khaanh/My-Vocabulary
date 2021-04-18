@@ -2,7 +2,6 @@
  * 11/04/21
  * TODO : Add button reset; +
  * TODO : Modal with new words; +
- * TODO : Loading screen;
  */
 
 let holderWords = document.querySelector('#js-holderWords');
@@ -80,10 +79,9 @@ btnCheck.addEventListener('click', function () {
 	let isEmptyAnswer = [];
 
 	for (let i = 0; i < arrValues.length; i++) {
-		if (
-			getTranslates(arrValues[i]) === arrValues[i].value.trim().toLowerCase() ||
-			getTranslates(arrValues[i]).includes(arrValues[i].value.trim().toLowerCase())
-		) {
+		let currentItem = arrValues[i].value.trim().toLowerCase();
+
+		if (getTranslates(arrValues[i]) === currentItem || getTranslates(arrValues[i]).includes(currentItem)) {
 			isCorrectAnswer.push(arrValues[i]);
 		} else if (arrValues[i].value.trim() == '' || arrValues[i].value == '[no answer]') {
 			isEmptyAnswer.push(arrValues[i]);
@@ -304,7 +302,7 @@ function addNewWord() {
 	translateArr = translateValue.split(',');
 
 	translateValueArr = translateArr.map((item) => {
-		return item.trim();
+		return item.trim().toLowerCase();
 	});
 
 	// CHECK FOR AN EXISTING BEFORE ADD
@@ -378,14 +376,3 @@ function letStart() {
 function showCountNewWords(arr) {
 	return (newWordCount.textContent = arr.length);
 }
-
-function f1() {
-	let arr = ['aa', 'bb', 'cc', 'zz', 123, 52];
-
-	let result = arr.includes('aa');
-	console.log('result:', result);
-
-	console.log('f1()');
-}
-
-f1();
