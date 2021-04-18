@@ -8,6 +8,9 @@
  * TODO : SAVE TO LOCAL STORAGE;
  * TODO : UI/UX ALL BUTTONS;
  * TODO : SPLIT TO MODULES;
+ * TODO : REMOVE RED BORDER AFTER FOCUS;
+ * TODO : SAVE == "ENTER";
+ * TODO : REMOVE == "DELETE";
  */
 
 let holderWords = document.querySelector('#js-holderWords');
