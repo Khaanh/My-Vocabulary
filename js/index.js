@@ -2,6 +2,12 @@
  * 11/04/21
  * TODO : Add button reset; +
  * TODO : Modal with new words; +
+ *
+ * 18/04/21
+ * TODO : CHECK NEW USERS;
+ * TODO : SAVE TO LOCAL STORAGE;
+ * TODO : UI/UX ALL BUTTONS;
+ * TODO : SPLIT TO MODULES;
  */
 
 let holderWords = document.querySelector('#js-holderWords');
