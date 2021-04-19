@@ -5,7 +5,7 @@
 *
 * 18/04/21
 * TODO : CHECK NEW USERS; +
-* TODO : SAVE TO LOCAL STORAGE;
+* TODO : SAVE TO LOCAL STORAGE +;
 * TODO : UI/UX ALL BUTTONS; +
 * TODO : SPLIT TO MODULES;
 * TODO : REMOVE RED BORDER AFTER FOCUS;
@@ -30,65 +30,16 @@ let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
 let wordsArray = []
 
-// let usersFlag = localStorage.getItem('newUser');
-// console.log('userFlag:', usersFlag);
-
-// if (usersFlag) {
-// 	wordsArray = localStorage.getItem('saves');
-// 	console.log('wordsArray', wordsArray);
-// 	alert('asdasd')
-// }
-
-//VOCABULARY LIST WORD
-// wordsArray = [
-// 	{
-// 		origin: 'Audacious',
-// 		translate: 'дерзкий',
-// 	},
-// 	{
-// 		origin: 'tick off',
-// 		translate: 'поставить галочку',
-// 	},
-// 	{
-// 		origin: 'likely',
-// 		translate: 'скорее всего',
-// 	},
-// 	{
-// 		origin: 'lack',
-// 		translate: 'отсутствие',
-// 	},
-// 	{
-// 		origin: 'solitary',
-// 		translate: 'уединенный',
-// 	},
-// 	{
-// 		origin: 'obstacles',
-// 		translate: 'препятствия',
-// 	},
-// 	{
-// 		origin: 'overcome',
-// 		translate: 'преодолевать',
-// 	},
-// ];
-
 
 	document.addEventListener('DOMContentLoaded', () => {
-		let newUser = localStorage.getItem('newUser');
-		let localSaves = JSON.parse(localStorage.saves);
 
-		console.log('localSaves', localSaves);
-		console.log('typeof localSaves', typeof localSaves);
-		
-		if (!localStorage.getItem('newUser')) {
-			// localStorage.setItem('newUser', false);
-			console.log('if');
+		if (localStorage.getItem('newUser') === null) {
+			titleH2.textContent = 'Good luck!';
 		} else {
-			modal.classList.add('is-hidden');
-			console.log('else');
-			wordsArray = JSON.parse(localStorage.saves)
-			console.log('wordsArray:', wordsArray);
-			console.log(typeof wordsArray);
+			titleH2.textContent = 'Welcome back!';
 
+			modal.classList.add('is-hidden');
+			wordsArray = JSON.parse(localStorage.saves);
 
 			//CHECK AVAILABILITY ARRAY WORD BEFORE START
 			totalAnswers.textContent = wordsArray.length > 0 ? `/${wordsArray.length}` : '/ 0';
@@ -100,7 +51,6 @@ let wordsArray = []
 			});
 		}
 	});
-
 
 
 // FUNCTION TO CREATE LIST WITH TWO PARAMS
@@ -289,7 +239,7 @@ function manipulateParentElem(self, icon, translate) {
 /**
 * TODO : CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
 * TODO : CHECK FOR AN EMPTY STRING. +
-* TODO : SAVE TO LOCAL STORAGE.
+* TODO : SAVE TO LOCAL STORAGE. +
 * ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
 */
 // SELECTORS
@@ -397,7 +347,6 @@ function letsStart() {
 
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
-	
 	// SET FLAG FOR FIRST VISIT
 	localStorage.setItem('newUser', false)
 
@@ -433,38 +382,4 @@ function showCountNewWords(arr) {
 }
 
 // ======================================================================================
-/**
-* 19/24/21
-*/
-// let usersFlag = true;
-
-// function checkNewUsers() {
-	// document.addEventListener('DOMContentLoaded', () => {
-	// 	let newUser = localStorage.getItem('newUser');
-		
-	// 	if (!newUser) {
-	// 		localStorage.setItem('newUser', false);
-	// 		console.log('if');
-	// 	} else {
-	// 		console.log('else');
-	// 		modal.classList.add('is-hidden');
-	// 		wordsArray = localStorage.getItem('saves');
-	// 		console.log('wordsArray:', wordsArray);
-
-	// 	}
-	// });
-// }
-// checkNewUsers();
-
-
-
-
-// let usersFlag = localStorage.getItem('newUser');
-// console.log('userFlag:', usersFlag);
-
-// if (usersFlag) {
-// 	wordsArray = localStorage.getItem('saves');
-// 	console.log('wordsArray', wordsArray);
-// 	alert('asdasd')
-// }
 
