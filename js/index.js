@@ -5,10 +5,10 @@
 *
 * 18/04/21
 * TODO : CHECK NEW USERS; +
-* TODO : SAVE TO LOCAL STORAGE +;
+* TODO : SAVE TO LOCAL STORAGE; +
 * TODO : UI/UX ALL BUTTONS; +
 * TODO : SPLIT TO MODULES;
-* TODO : REMOVE RED BORDER AFTER FOCUS;
+* TODO : REMOVE RED BORDER AFTER FOCUS; +
 * TODO : SAVE == "ENTER";
 * TODO : REMOVE == "DELETE";
 * TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER";
@@ -17,6 +17,7 @@
 * TODO : TOPIC LIST;
 * TODO : RANDOM SORT;
 * TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
+* ? : PERSONAL WELCOME;
 */
 
 let holderWords = document.querySelector('#js-holderWords');
@@ -382,4 +383,21 @@ function showCountNewWords(arr) {
 }
 
 // ======================================================================================
+/**
+ * 19/04/21;
+ */
 
+let modalControl = document.querySelectorAll('.modal-control');
+
+// FUNCTION REMOVE ERROR-BORDER AFTER FOCUS
+function removeErrorBorder() {
+
+	for (let i = 0; i < modalControl.length; i++) {
+
+		modalControl[i].onfocus = function () {
+			if (modalControl[i].parentElement.classList.contains('is-error')) {
+				modalControl[i].parentElement.classList.remove('is-error');
+			}
+		}
+	}
+} removeErrorBorder();
