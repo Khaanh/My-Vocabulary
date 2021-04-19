@@ -1,24 +1,28 @@
 /**
-* 11/04/21
-* TODO : Add button reset; +
-* TODO : Modal with new words; +
-*
-* 18/04/21
-* TODO : CHECK NEW USERS; +
-* TODO : SAVE TO LOCAL STORAGE; +
-* TODO : UI/UX ALL BUTTONS; +
-* TODO : SPLIT TO MODULES;
-* TODO : REMOVE RED BORDER AFTER FOCUS; +
-* TODO : SAVE == "ENTER";
-* TODO : REMOVE == "DELETE";
-* TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER";
-* TODO : TOOLTIPS TO BUTTONS;
-* TODO : BUTTON CREATE NEW LIST;
-* TODO : TOPIC LIST;
-* TODO : RANDOM SORT;
-* TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
-* ? : PERSONAL WELCOME;
-*/
+ * 11/04/21
+ * TODO : Add button reset; +
+ * TODO : Modal with new words; +
+ *
+ * 18/04/21
+ * TODO : CHECK NEW USERS; +
+ * TODO : SAVE TO LOCAL STORAGE; +
+ * TODO : UI/UX ALL BUTTONS; +
+ * TODO : SPLIT TO MODULES;
+ * TODO : REMOVE RED BORDER AFTER FOCUS; +
+ * TODO : SAVE == "ENTER";
+ * TODO : REMOVE == "DELETE";
+ * TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER";
+ * TODO : TOOLTIPS TO BUTTONS;
+ * TODO : BUTTON CREATE NEW LIST;
+ * TODO : TOPIC LIST;
+ * TODO : RANDOM SORT;
+ * TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
+ * ? : PERSONAL WELCOME;
+ */
+
+// import { checkUsers } from './checkNewUser.js';
+import * as checkUsers  from './checkNewUser.js';
+
 
 let holderWords = document.querySelector('#js-holderWords');
 let correctAnswers = document.querySelector('#js-correctAnswers');
@@ -29,7 +33,7 @@ let totalScore = document.querySelector('.total-score');
 let titleH2 = document.querySelector('.title-h2');
 let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
-let wordsArray = []
+let wordsArray = [];
 
 
 	document.addEventListener('DOMContentLoaded', () => {
