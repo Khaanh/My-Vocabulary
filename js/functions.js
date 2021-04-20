@@ -1,3 +1,4 @@
+import { newWordCount } from './variables.js';
 export { getTranslates, showCountNewWords };
   
 // FUNCTION TAKE CLOSEST ORIGIN WORD & RETURN TRANSLATE

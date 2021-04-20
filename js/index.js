@@ -25,7 +25,7 @@
 */
 
 export {inputValues}
-import { modal, btnAdd, btnCheck, btnReset, holderWords, totalAnswers, btnStart, btnRemove, newOrigin, newTranslate, newWordCount, removedWord,} from './variables.js';
+import { modal, btnAdd, btnCheck, btnReset, holderWords, totalAnswers, btnStart, btnRemove, newOrigin, newTranslate, removedWord,} from './variables.js';
 import { hideScore, displayScore } from './hideShowScores.js';
 import { removeErrorBorder } from './modal.js';
 import showTooltTips from './showToolTips.js';
