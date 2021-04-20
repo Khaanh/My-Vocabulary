@@ -1,3 +1,6 @@
+import { titleH2, modal, wordsArray } from './variables.js';
+import createList from './createList.js';
+
 export default
   
     document.addEventListener('DOMContentLoaded', () => {

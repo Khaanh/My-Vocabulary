@@ -20,59 +20,20 @@
  * ? : PERSONAL WELCOME;
  */
 
-// import { checkUsers } from './checkNewUser.js';
-import * as checkUsers  from './checkNewUser.js';
+import { modal} from './variables.js';
+import { hideScore, displayScore } from './hideShowScores.js';
+import { removeErrorBorder } from './modal.js';
+import showTooltTips from './showToolTips.js';
+// import { resetValuesAndStates } from './buttonsFunction.js';
 
 
 let holderWords = document.querySelector('#js-holderWords');
-let correctAnswers = document.querySelector('#js-correctAnswers');
 let totalAnswers = document.querySelector('#js-totalAnswers');
 let btnCheck = document.querySelector('#js-btnCheck');
 let btnReset = document.querySelector('#js-btnReset');
-let totalScore = document.querySelector('.total-score');
-let titleH2 = document.querySelector('.title-h2');
 let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
-let wordsArray = [];
 
-
-	document.addEventListener('DOMContentLoaded', () => {
-
-		if (localStorage.getItem('newUser') === null) {
-			titleH2.textContent = 'Good luck!';
-		} else {
-			titleH2.textContent = 'Welcome back!';
-
-			modal.classList.add('is-hidden');
-			wordsArray = JSON.parse(localStorage.saves);
-
-			//CHECK AVAILABILITY ARRAY WORD BEFORE START
-			totalAnswers.textContent = wordsArray.length > 0 ? `/${wordsArray.length}` : '/ 0';
-			correctAnswers.textContent = 0;
-			
-			// CREATE A LIST FOR EACH OF WORD
-			wordsArray.forEach((item) => {
-				createList(item.origin, item.translate);
-			});
-		}
-	});
-
-
-// FUNCTION TO CREATE LIST WITH TWO PARAMS
-function createList(origin, translate) {
-	let li = document.createElement('label');
-	
-	li.classList.add('list-items');
-	li.innerHTML = `<span class="list-origin" data-translate="${translate}">${origin}</span>
-	<div class="form-holder">
-	<input type="text" class="form-control">
-	</div>`;
-	
-	holderWords.appendChild(li);
-	
-	// AFTER CREATED ALL LIST, SELECT IT TO GET VALUES
-	inputValues = document.querySelectorAll('.form-control');
-}
 
 // BUTTON TO CHECK VALUES
 btnCheck.addEventListener('click', function () {
@@ -166,18 +127,6 @@ function addMarks(correct, wrong, empty) {
 	});
 }
 
-// FUNCTION HIDE USER'S SCORES
-function hideScore() {
-	totalScore.classList.add('is-hidden');
-	titleH2.classList.remove('is-hidden');
-}
-
-// FUNCTION DISPLAY USER'S SCORES
-function displayScore(scores) {
-	correctAnswers.textContent = scores.length;
-	totalScore.classList.remove('is-hidden');
-	titleH2.classList.add('is-hidden');
-}
 
 // FUNCTION CREATE TAG "<i>" FOR APPEND ICON
 function createIconEmpty() {
@@ -203,28 +152,28 @@ function createTagForCorrectAnswers(value) {
 	return showAnswer;
 }
 
-// FUNCTION SHOW TOOL TIPS
-function showTooltTips(nodeList) {
-	let arr = [...nodeList];
-	let span = document.createElement('span');
-	span.classList.add('tool-tip');
+// // FUNCTION SHOW TOOL TIPS
+// function showTooltTips(nodeList) {
+// 	let arr = [...nodeList];
+// 	let span = document.createElement('span');
+// 	span.classList.add('tool-tip');
 	
-	for (let i = 0; i < arr.length; i++) {
-		arr[i].addEventListener('mouseenter', function () {
-			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
-			opacity: 1;
-			right: -16px;
-			`;
-		});
+// 	for (let i = 0; i < arr.length; i++) {
+// 		arr[i].addEventListener('mouseenter', function () {
+// 			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
+// 			opacity: 1;
+// 			right: -16px;
+// 			`;
+// 		});
 		
-		arr[i].addEventListener('mouseleave', function () {
-			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
-			opacity: 0;
-			right: -36px;
-			`;
-		});
-	}
-}
+// 		arr[i].addEventListener('mouseleave', function () {
+// 			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
+// 			opacity: 0;
+// 			right: -36px;
+// 			`;
+// 		});
+// 	}
+// }
 
 // FUNCTION SHOW CORRECT ANSWERS
 function showCorrectAnswers(arr) {
@@ -255,7 +204,7 @@ let newOrigin = document.querySelector('#js-newOrigin');
 let newTranslate = document.querySelector('#js-newTranslate');
 let newWordCount = document.querySelector('#js-wordCound');
 let removedWord = document.querySelector('#js-removedWord');
-let modal = document.querySelector('#js-modal');
+// let modal = document.querySelector('#js-modal');
 
 // VALUES
 let originValue = newOrigin.value;
@@ -263,7 +212,6 @@ let translateValue = newTranslate.value;
 
 // ARR & OBJ
 let newWords = [];
-let filteredWords = [];
 let translateArr = [];
 let translateValueArr = [];
 
@@ -385,23 +333,3 @@ function letsStart() {
 function showCountNewWords(arr) {
 	return (newWordCount.textContent = arr.length);
 }
-
-// ======================================================================================
-/**
- * 19/04/21;
- */
-
-let modalControl = document.querySelectorAll('.modal-control');
-
-// FUNCTION REMOVE ERROR-BORDER AFTER FOCUS
-function removeErrorBorder() {
-
-	for (let i = 0; i < modalControl.length; i++) {
-
-		modalControl[i].onfocus = function () {
-			if (modalControl[i].parentElement.classList.contains('is-error')) {
-				modalControl[i].parentElement.classList.remove('is-error');
-			}
-		}
-	}
-} removeErrorBorder();
