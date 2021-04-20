@@ -1,8 +1,10 @@
-import { titleH2, modal, wordsArray } from './variables.js';
+import { titleH2, modal, totalAnswers, correctAnswers } from './variables.js';
 import createList from './createList.js';
 
 export default
   
+  function check() {
+  let wordsArray = [];
     document.addEventListener('DOMContentLoaded', () => {
       
       if (localStorage.getItem('newUser') === null) {
@@ -23,3 +25,5 @@ export default
         });
       }
     });
+}
+check();

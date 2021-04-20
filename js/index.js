@@ -29,6 +29,7 @@ import { modal, btnAdd, btnCheck, btnReset, holderWords, totalAnswers, btnStart,
 import { hideScore, displayScore } from './hideShowScores.js';
 import { removeErrorBorder } from './modal.js';
 import showTooltTips from './showToolTips.js';
+import check from './checkNewUser.js';
 import { resetValuesAndStates, addMarks, showCorrectAnswers } from './buttonsFunction.js';
 import {getTranslates, showCountNewWords} from './functions.js';
 
@@ -77,6 +78,7 @@ let originValue = newOrigin.value;
 let translateValue = newTranslate.value;
 
 // ARR & OBJ
+// let wordsArray = [];
 let newWords = [];
 let translateArr = [];
 let translateValueArr = [];

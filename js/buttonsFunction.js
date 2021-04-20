@@ -1,4 +1,4 @@
-import { inputValues } from './index.js';
+// import { inputValues } from './index.js';
 export { resetValuesAndStates, addMarks, showCorrectAnswers };
   
 // FUNCTION RESET ALL INPUT VALUES AND STATES

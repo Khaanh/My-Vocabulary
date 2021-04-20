@@ -1,4 +1,5 @@
-// import { holderWords } from './variables.js';
+import { holderWords } from './variables.js';
+import { inputValues } from './index.js';
 
 export default
 

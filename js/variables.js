@@ -1,5 +1,5 @@
 export {
-  holderWords, correctAnswers, totalAnswers, btnCheck, btnReset, totalScore, titleH2, wordsArray, btnAdd, btnStart, btnRemove, newOrigin, newTranslate, newWordCount, removedWord, modal, modalControl, filteredWords, };
+  holderWords, correctAnswers, totalAnswers, btnCheck, btnReset, totalScore, titleH2, btnAdd, btnStart, btnRemove, newOrigin, newTranslate, newWordCount, removedWord, modal, modalControl, filteredWords, };
   
 // SELECTORS
 let holderWords = document.querySelector('#js-holderWords');
@@ -25,7 +25,7 @@ let modalControl = document.querySelectorAll('.modal-control');
 // let translateValue = newTranslate.value;
 
 // ARR & OBJ
-let wordsArray = [];
+// let wordsArray = [];
 let filteredWords = [];
 // let newWords = [];
 // let translateArr = [];
