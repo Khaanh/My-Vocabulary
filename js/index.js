@@ -1,39 +1,40 @@
 /**
- * 11/04/21
- * TODO : Add button reset; +
- * TODO : Modal with new words; +
- *
- * 18/04/21
- * TODO : CHECK NEW USERS; +
- * TODO : SAVE TO LOCAL STORAGE; +
- * TODO : UI/UX ALL BUTTONS; +
- * TODO : SPLIT TO MODULES;
- * TODO : REMOVE RED BORDER AFTER FOCUS; +
- * TODO : SAVE == "ENTER";
- * TODO : REMOVE == "DELETE";
- * TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER";
- * TODO : TOOLTIPS TO BUTTONS;
- * TODO : BUTTON CREATE NEW LIST;
- * TODO : TOPIC LIST;
- * TODO : RANDOM SORT;
- * TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
- * ? : PERSONAL WELCOME;
- */
+* 11/04/21
+* TODO : Add button reset; +
+* TODO : Modal with new words; +
+* TODO : CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
+* TODO : CHECK FOR AN EMPTY STRING. +
+* TODO : SAVE TO LOCAL STORAGE. +
+* ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
+*
+* 18/04/21
+* TODO : CHECK NEW USERS; +
+* TODO : SAVE TO LOCAL STORAGE; +
+* TODO : UI/UX ALL BUTTONS; +
+* TODO : SPLIT TO MODULES; +
+* TODO : REMOVE RED BORDER AFTER FOCUS; +
+* TODO : SAVE == "ENTER";
+* TODO : REMOVE == "DELETE";
+* TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER";
+* TODO : TOOLTIPS TO BUTTONS;
+* TODO : BUTTON CREATE NEW LIST;
+* TODO : TOPIC LIST;
+* TODO : RANDOM SORT;
+* TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
+* ? : PERSONAL WELCOME;
+*/
 
-import { modal} from './variables.js';
+export {inputValues}
+import { modal, btnAdd, btnCheck, btnReset, holderWords, totalAnswers, btnStart, btnRemove, newOrigin, newTranslate, newWordCount, removedWord,} from './variables.js';
 import { hideScore, displayScore } from './hideShowScores.js';
 import { removeErrorBorder } from './modal.js';
 import showTooltTips from './showToolTips.js';
-// import { resetValuesAndStates } from './buttonsFunction.js';
+import { resetValuesAndStates, addMarks, showCorrectAnswers } from './buttonsFunction.js';
+import {getTranslates, showCountNewWords} from './functions.js';
 
 
-let holderWords = document.querySelector('#js-holderWords');
-let totalAnswers = document.querySelector('#js-totalAnswers');
-let btnCheck = document.querySelector('#js-btnCheck');
-let btnReset = document.querySelector('#js-btnReset');
 let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
-
 
 // BUTTON TO CHECK VALUES
 btnCheck.addEventListener('click', function () {
@@ -54,9 +55,6 @@ btnCheck.addEventListener('click', function () {
 		}
 	}
 	
-	console.log('Result: ', getTranslates(arrValues[arrValues.length - 1]).includes('zz'));
-	console.log('Result: ', getTranslates(arrValues[arrValues.length - 1]));
-	
 	this.disabled = true;
 	displayScore(isCorrectAnswer);
 	addMarks(isCorrectAnswer, isWrongAnswer, isEmptyAnswer);
@@ -74,138 +72,6 @@ btnReset.addEventListener('click', () => {
 	hideScore();
 });
 
-// FUNCTION RESET ALL INPUT VALUES AND STATES
-function resetValuesAndStates() {
-	let arrForReset = inputValues;
-	
-	for (let i = 0; i < arrForReset.length; i++) {
-		if (arrForReset[i].parentElement.classList.contains('is-correct')) {
-			arrForReset[i].parentElement.classList.remove('is-correct');
-		}
-		
-		if (arrForReset[i].parentElement.classList.contains('is-wrong')) {
-			arrForReset[i].parentElement.classList.remove('is-wrong');
-			arrForReset[i].nextElementSibling.remove();
-		}
-		
-		if (arrForReset[i].parentElement.classList.contains('is-empty')) {
-			arrForReset[i].parentElement.classList.remove('is-empty');
-			arrForReset[i].nextElementSibling.remove();
-			arrForReset[i].previousElementSibling.remove();
-		}
-		
-		arrForReset[i].value = '';
-		arrForReset[i].disabled = false;
-	}
-}
-
-// FUNCTION TAKE CLOSEST ORIGIN WORD & RETURN TRANSLATE
-function getTranslates(el) {
-	let synonyms = el.parentElement.previousElementSibling.dataset.translate.split(',');
-	return synonyms;
-}
-
-// FUNCTION ADD MARKS RELEVANT ANSWERS
-function addMarks(correct, wrong, empty) {
-	correct.forEach((item) => {
-		item.disabled = true;
-		item.parentElement.classList.add('is-correct');
-	});
-	
-	wrong.forEach((item) => {
-		item.disabled = true;
-		item.parentElement.classList.add('is-wrong');
-	});
-	
-	empty.forEach((item) => {
-		let iconEmpty = createIconEmpty();
-		let translates = createTagTranslate.call(item);
-		
-		item.value = '[no answer]';
-		item.disabled = true;
-		manipulateParentElem(item, iconEmpty, translates);
-	});
-}
-
-
-// FUNCTION CREATE TAG "<i>" FOR APPEND ICON
-function createIconEmpty() {
-	let emptyElem = document.createElement('i');
-	emptyElem.classList.add('icon-empty');
-	return emptyElem;
-}
-
-// FUNCTION CREATE TAG "<span>" FOR INNERTEXT TRANSLATES TO TOOLTIPS
-function createTagTranslate() {
-	let tagTranslate = document.createElement('span');
-	tagTranslate.classList.add('tool-tip');
-	tagTranslate.innerHTML = this.parentElement.previousElementSibling.dataset.translate;
-	return tagTranslate;
-}
-
-// FUNCTION CREATE TAG "<span>" FOR CORRECT ANSWERS
-function createTagForCorrectAnswers(value) {
-	let showAnswer = document.createElement('span');
-	showAnswer.classList.add('show-answer');
-	
-	showAnswer.textContent = value.parentElement.previousElementSibling.dataset.translate;
-	return showAnswer;
-}
-
-// // FUNCTION SHOW TOOL TIPS
-// function showTooltTips(nodeList) {
-// 	let arr = [...nodeList];
-// 	let span = document.createElement('span');
-// 	span.classList.add('tool-tip');
-	
-// 	for (let i = 0; i < arr.length; i++) {
-// 		arr[i].addEventListener('mouseenter', function () {
-// 			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
-// 			opacity: 1;
-// 			right: -16px;
-// 			`;
-// 		});
-		
-// 		arr[i].addEventListener('mouseleave', function () {
-// 			arr[i].previousElementSibling.previousElementSibling.style.cssText = `
-// 			opacity: 0;
-// 			right: -36px;
-// 			`;
-// 		});
-// 	}
-// }
-
-// FUNCTION SHOW CORRECT ANSWERS
-function showCorrectAnswers(arr) {
-	arr.forEach((item) => {
-		item.parentElement.appendChild(createTagForCorrectAnswers(item));
-	});
-}
-
-// FUNCTION MANIPULATE WITH PARENT ELEM
-function manipulateParentElem(self, icon, translate) {
-	self.parentElement.classList.add('is-empty');
-	self.parentElement.appendChild(icon);
-	self.parentElement.prepend(translate);
-}
-
-// ======================================================================================
-/**
-* TODO : CHECK FOR AN EXISTING WORD BEFORE ADD TO ARR. +
-* TODO : CHECK FOR AN EMPTY STRING. +
-* TODO : SAVE TO LOCAL STORAGE. +
-* ? MAKE REPLACE INSTEAD 2 OR MORE SPACES TO 1 SPACE.
-*/
-// SELECTORS
-let btnMore = document.querySelector('#js-btnMore');
-let btnStart = document.querySelector('#js-btnStart');
-let btnRemove = document.querySelector('#js-btnRemoveLast');
-let newOrigin = document.querySelector('#js-newOrigin');
-let newTranslate = document.querySelector('#js-newTranslate');
-let newWordCount = document.querySelector('#js-wordCound');
-let removedWord = document.querySelector('#js-removedWord');
-// let modal = document.querySelector('#js-modal');
-
 // VALUES
 let originValue = newOrigin.value;
 let translateValue = newTranslate.value;
@@ -216,7 +82,7 @@ let translateArr = [];
 let translateValueArr = [];
 
 // BUTTON ADD MORE NEW WORDS & TRANSLATES
-btnMore.addEventListener('click', addNewWord);
+btnAdd.addEventListener('click', addNewWord);
 
 // BUTTON LETS START
 btnStart.addEventListener('click', letsStart);
@@ -297,12 +163,12 @@ function addNewWord() {
 
 // FUNCTION CLOSE MODAL & START TEST
 function letsStart() {
-
+	
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
 	// SET FLAG FOR FIRST VISIT
 	localStorage.setItem('newUser', false)
-
+	
 	newWords.forEach((item) => {
 		createList(item.origin, item.translate);
 	});
@@ -327,9 +193,4 @@ function letsStart() {
 	modal.addEventListener('animationend', () => {
 		modal.classList.add('is-hidden');
 	});
-}
-
-// FUNCTION SHOW COUNT OF NEW WORDS
-function showCountNewWords(arr) {
-	return (newWordCount.textContent = arr.length);
 }

@@ -199,13 +199,13 @@
   border: 1px solid #27ae60;
 }
 
-.btn-more {
+.btn-add {
   border: 1px solid #007bff;
   background-color: #007bff;
   margin: 0 12px 16px;
   padding: 10px 32px 10px 16px;
 }
-.btn-more i {
+.btn-add i {
   letter-spacing: 0px;
   -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
@@ -214,10 +214,10 @@
   bottom: 10px;
 }
 @media only screen and (min-width: 1025px) {
-  .btn-more:hover {
+  .btn-add:hover {
     background-color: #1988ff;
   }
-  .btn-more:hover i {
+  .btn-add:hover i {
     letter-spacing: 0.4rem;
   }
 }
