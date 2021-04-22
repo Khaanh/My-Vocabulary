@@ -404,7 +404,7 @@ function removeErrorBorder() {
 
 
 // ========================================
-// FUNCTIONS BY KEYBOARD
+// FUNCTIONS ADD, REMOVE, START BY KEYBOARD
 document.addEventListener('keydown', function (e) {
 	console.log(e);
 	if (e.code === "Enter") {
@@ -419,3 +419,4 @@ document.addEventListener('keydown', function (e) {
 		removeLast();
 	}
 })
+
