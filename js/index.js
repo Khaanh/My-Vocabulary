@@ -9,9 +9,9 @@
 * TODO : UI/UX ALL BUTTONS; +
 * TODO : SPLIT TO MODULES;
 * TODO : REMOVE RED BORDER AFTER FOCUS; +
-* TODO : SAVE == "ENTER";
-* TODO : REMOVE == "DELETE";
-* TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER";
+* TODO : SAVE == "ENTER"; +
+* TODO : REMOVE == "DELETE"; +
+* TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER"; +
 * TODO : TOOLTIPS TO BUTTONS;
 * TODO : BUTTON CREATE NEW LIST;
 * TODO : TOPIC LIST;
@@ -401,3 +401,21 @@ function removeErrorBorder() {
 		}
 	}
 } removeErrorBorder();
+
+
+// ========================================
+// FUNCTIONS BY KEYBOARD
+document.addEventListener('keydown', function (e) {
+	console.log(e);
+	if (e.code === "Enter") {
+		addNewWord();
+	}
+
+	if (e.code === "Enter" && e.shiftKey) {
+		letsStart();
+	}
+
+	if (e.code === 'Delete') {
+		removeLast();
+	}
+})

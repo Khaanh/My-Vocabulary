@@ -34,7 +34,9 @@
 }
 
 .modal-heading {
-  margin-bottom: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 16px;
+  position: relative;
 }
 
 .modal-title {
@@ -55,8 +57,10 @@
   font-weight: 400;
   color: red;
   position: absolute;
-  top: 0;
-  right: 25%;
+  bottom: 0;
+  right: 50%;
+  -webkit-transform: translate(50%, 0);
+          transform: translate(50%, 0);
   opacity: 0;
   text-decoration: none;
   -webkit-animation-duration: 3000ms;
@@ -303,42 +307,24 @@
 @-webkit-keyframes removed {
   0% {
     opacity: 0;
-    right: 25%;
-    text-decoration: none;
   }
   50% {
     opacity: 1;
-    right: 18%;
-  }
-  60% {
-    opacity: 1;
-    right: 18%;
   }
   100% {
     opacity: 0;
-    right: 0;
-    text-decoration: none;
   }
 }
 
 @keyframes removed {
   0% {
     opacity: 0;
-    right: 25%;
-    text-decoration: none;
   }
   50% {
     opacity: 1;
-    right: 18%;
-  }
-  60% {
-    opacity: 1;
-    right: 18%;
   }
   100% {
     opacity: 0;
-    right: 0;
-    text-decoration: none;
   }
 }
 @-webkit-keyframes crossLine {
