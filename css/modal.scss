@@ -202,6 +202,7 @@
       .info-box {
         transform: translate(-50%, 0);
         opacity: 1;
+        z-index: 30;
       }
     }
 
@@ -209,6 +210,7 @@
       .info-box {
         transform: translate(-50%, 0);
         opacity: 1;
+        z-index: 30;
       }
     }
 
@@ -216,6 +218,7 @@
       .info-box {
         transform: translate(-50%, 0);
         opacity: 1;
+        z-index: 30;
       }
     }
   }
@@ -236,21 +239,22 @@
   border-radius: 6px;
   font-size: 14px;
   opacity: 0;
+  z-index: -1;
+  transition: 0.5s ease;
+  // &:first-of-type {
+  //   transition-duration: 0.2s;
+  //   transition-delay: 0.3s;
+  // }
 
-  &:first-of-type {
-    transition-duration: 0.2s;
-    transition-delay: 0.3s;
-  }
+  // &:nth-of-type(2) {
+  //   transition-duration: 0.4s;
+  //   transition-delay: 0.6s;
+  // }
 
-  &:nth-of-type(2) {
-    transition-duration: 0.4s;
-    transition-delay: 0.6s;
-  }
-
-  &:last-of-type {
-    transition-duration: 0.6s;
-    transition-delay: 0.9s;
-  }
+  // &:last-of-type {
+  //   transition-duration: 0.6s;
+  //   transition-delay: 0.9s;
+  // }
 
   &:after {
     content: '';

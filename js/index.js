@@ -12,7 +12,7 @@
 * TODO : SAVE == "ENTER"; +
 * TODO : REMOVE == "DELETE"; +
 * TODO : LETS START == "DOUBLE ENTER" || "SHIFT ENTER"; +
-* TODO : TOOLTIPS TO BUTTONS;
+* TODO : TOOLTIPS TO BUTTONS; +
 * TODO : BUTTON CREATE NEW LIST;
 * TODO : TOPIC LIST;
 * TODO : RANDOM SORT;
@@ -32,26 +32,26 @@ let iconForHelp;
 let wordsArray = []
 
 
-	document.addEventListener('DOMContentLoaded', () => {
-
-		if (localStorage.getItem('newUser') === null) {
-			titleH2.textContent = 'Good luck!';
-		} else {
-			titleH2.textContent = 'Welcome back!';
-
-			modal.classList.add('is-hidden');
-			wordsArray = JSON.parse(localStorage.saves);
-
-			//CHECK AVAILABILITY ARRAY WORD BEFORE START
-			totalAnswers.textContent = wordsArray.length > 0 ? `/${wordsArray.length}` : '/ 0';
-			correctAnswers.textContent = 0;
-			
-			// CREATE A LIST FOR EACH OF WORD
-			wordsArray.forEach((item) => {
-				createList(item.origin, item.translate);
-			});
-		}
-	});
+document.addEventListener('DOMContentLoaded', () => {
+	
+	if (localStorage.getItem('newUser') === null) {
+		titleH2.textContent = 'Good luck!';
+	} else {
+		titleH2.textContent = 'Welcome back!';
+		
+		modal.classList.add('is-hidden');
+		wordsArray = JSON.parse(localStorage.saves);
+		
+		//CHECK AVAILABILITY ARRAY WORD BEFORE START
+		totalAnswers.textContent = wordsArray.length > 0 ? `/${wordsArray.length}` : '/ 0';
+		correctAnswers.textContent = 0;
+		
+		// CREATE A LIST FOR EACH OF WORD
+		wordsArray.forEach((item) => {
+			createList(item.origin, item.translate);
+		});
+	}
+});
 
 
 // FUNCTION TO CREATE LIST WITH TWO PARAMS
@@ -345,12 +345,12 @@ function addNewWord() {
 
 // FUNCTION CLOSE MODAL & START TEST
 function letsStart() {
-
+	
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
 	// SET FLAG FOR FIRST VISIT
 	localStorage.setItem('newUser', false)
-
+	
 	newWords.forEach((item) => {
 		createList(item.origin, item.translate);
 	});
@@ -384,16 +384,16 @@ function showCountNewWords(arr) {
 
 // ======================================================================================
 /**
- * 19/04/21;
- */
+* 19/04/21;
+*/
 
 let modalControl = document.querySelectorAll('.modal-control');
 
 // FUNCTION REMOVE ERROR-BORDER AFTER FOCUS
 function removeErrorBorder() {
-
+	
 	for (let i = 0; i < modalControl.length; i++) {
-
+		
 		modalControl[i].onfocus = function () {
 			if (modalControl[i].parentElement.classList.contains('is-error')) {
 				modalControl[i].parentElement.classList.remove('is-error');
@@ -409,11 +409,11 @@ document.addEventListener('keydown', function (e) {
 	if (e.code === "Enter") {
 		addNewWord();
 	}
-
+	
 	if (e.code === "Enter" && e.shiftKey) {
 		letsStart();
 	}
-
+	
 	if (e.code === 'Delete') {
 		removeLast();
 	}
@@ -421,8 +421,8 @@ document.addEventListener('keydown', function (e) {
 
 // ========================================
 // FUNCTION SHOW TOOLTIPS BUTTONS AFTER LOADED
-let allBtns = document.querySelectorAll('.modal-buttons button');
-function buttonsTooltip(cb) {
+function buttonsTooltip() {
+	let allBtns = document.querySelectorAll('.modal-buttons button');
 	
 	allBtns.forEach(button => {
 		let fragment = document.createDocumentFragment();
@@ -435,6 +435,10 @@ function buttonsTooltip(cb) {
 	})
 	setTimeout(() => {
 		allBtns[0].parentElement.classList.add('is-show')
-	}, 100)
+	}, 800)
+	
+	setTimeout(() => {
+		allBtns[0].parentElement.classList.remove('is-show')
+	}, 4500)
 }
 buttonsTooltip();

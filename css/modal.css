@@ -207,16 +207,19 @@
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   opacity: 1;
+  z-index: 30;
 }
 .modal-buttons.is-show:nth-child(2) .info-box {
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   opacity: 1;
+  z-index: 30;
 }
 .modal-buttons.is-show:last-child .info-box {
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   opacity: 1;
+  z-index: 30;
 }
 
 .info-box {
@@ -237,24 +240,9 @@
   border-radius: 6px;
   font-size: 14px;
   opacity: 0;
-}
-.info-box:first-of-type {
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
-}
-.info-box:nth-of-type(2) {
-  -webkit-transition-duration: 0.4s;
-          transition-duration: 0.4s;
-  -webkit-transition-delay: 0.6s;
-          transition-delay: 0.6s;
-}
-.info-box:last-of-type {
-  -webkit-transition-duration: 0.6s;
-          transition-duration: 0.6s;
-  -webkit-transition-delay: 0.9s;
-          transition-delay: 0.9s;
+  z-index: -1;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 .info-box:after {
   content: "";
