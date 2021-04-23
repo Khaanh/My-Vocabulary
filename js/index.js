@@ -406,7 +406,6 @@ function removeErrorBorder() {
 // ========================================
 // FUNCTIONS ADD, REMOVE, START BY KEYBOARD
 document.addEventListener('keydown', function (e) {
-	console.log(e);
 	if (e.code === "Enter") {
 		addNewWord();
 	}
@@ -420,3 +419,22 @@ document.addEventListener('keydown', function (e) {
 	}
 })
 
+// ========================================
+// FUNCTION SHOW TOOLTIPS BUTTONS AFTER LOADED
+let allBtns = document.querySelectorAll('.modal-buttons button');
+function buttonsTooltip(cb) {
+	
+	allBtns.forEach(button => {
+		let fragment = document.createDocumentFragment();
+		let span = document.createElement('span');
+		span.classList.add('info-box');
+		span.textContent = button.dataset.info;
+		fragment.appendChild(span);
+		button.appendChild(fragment);
+		console.log(allBtns[0].parentElement);
+	})
+	setTimeout(() => {
+		allBtns[0].parentElement.classList.add('is-show')
+	}, 100)
+}
+buttonsTooltip();
