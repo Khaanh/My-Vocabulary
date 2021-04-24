@@ -75,6 +75,12 @@ button:disabled {
   margin-right: 12px;
 }
 
+.title-theme {
+  font-size: 34px;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
 .holder {
   margin-bottom: 46px;
   border: 1px solid #27ae60;

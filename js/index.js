@@ -24,11 +24,15 @@
  * 24/04/21
  * TODO : SPLIT TO MODULES;
  * TODO : BUTTON CREATE NEW LIST;
- * TODO : TOPIC LIST;
+ * TODO : TOPIC LIST
+ * 				- MORE/INFO/DETAILS (DATE, DEADLINE, DESCR, STATISTIC);
+ *        - ADD MORE WORDS / REMOVE WORDS;
+ * 				- DIFFERENT BORDER-COLOR TO CARDS;
  * TODO : RANDOM SORT;
  * TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
  * TODO : FOCUS ON FIRST INPUT AFTER ADDED; +
  * TODO : RESET ALL BUTTON;
+ * TODO : MORE INFO (DATA);
  */
 
 let holderWords = document.querySelector('#js-holderWords');
@@ -38,6 +42,7 @@ let btnCheck = document.querySelector('#js-btnCheck');
 let btnStartOver = document.querySelector('#js-btnStartOver');
 let totalScore = document.querySelector('.total-score');
 let titleH2 = document.querySelector('.title-h2');
+let titleTheme = document.querySelector('.title-theme');
 let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
 let wordsArray = [];
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		titleH2.textContent = 'Good luck!';
 	} else {
 		titleH2.textContent = 'Welcome back!';
+		titleTheme.textContent = localStorage.getItem('theme');
 
 		modal.classList.add('is-hidden');
 		wordsArray = JSON.parse(localStorage.saves);
@@ -259,6 +265,7 @@ let newTranslate = document.querySelector('#js-newTranslate');
 let newWordCount = document.querySelector('#js-wordCound');
 let removedWord = document.querySelector('#js-removedWord');
 let modal = document.querySelector('#js-modal');
+let theme = document.querySelector('#js-theme');
 
 // VALUES
 let originValue = newOrigin.value;
@@ -353,10 +360,19 @@ function addNewWord() {
 
 // FUNCTION CLOSE MODAL & START TEST
 function letsStart() {
+	let themeValue = theme.value;
+
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
 	// SET FLAG FOR FIRST VISIT
 	localStorage.setItem('newUser', false);
+
+	if (themeValue) {
+		let firstLaterUpperCase = themeValue[0].toUpperCase() + themeValue.slice(1, themeValue.length);
+		// SET THEME
+		localStorage.setItem('theme', firstLaterUpperCase);
+		titleTheme.textContent = firstLaterUpperCase;
+	}
 
 	newWords.forEach((item) => {
 		createList(item.origin, item.translate);

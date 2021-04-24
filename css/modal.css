@@ -101,6 +101,10 @@
   margin-bottom: 36px;
 }
 
+.modal-topic {
+  margin-bottom: 24px;
+}
+
 .modal-inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,6 +180,14 @@
   opacity: 1;
   border: 1px solid #c0392b;
   background-color: #c0392b;
+}
+
+.full-width {
+  max-width: 100%;
+}
+
+.no-indicator:after {
+  display: none;
 }
 
 .modal-label {
