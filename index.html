@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="./css/theme-list.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap"
     rel="stylesheet">
@@ -16,29 +17,138 @@
 <body>
 
   <div class="wrapper">
-    <section class="header-block">
-      <strong class="total-score is-hidden">
-        <p>Correct answers: </p>
-        <span class="correct-answer" id="js-correctAnswers"></span>
-        <span id="js-totalAnswers"></span>
-      </strong>
-      <h2 class="title-h2">Welcome back!</h2>
-    </section>
-    <section class="body-block">
-      <form action="#" class="form-block">
-        <div class="holder" id="js-holderWords"></div>
-      </form>
-    </section>
-    <section class="body-footer">
-      <div class="footer-btns">
-        <button type="button" class="btn-check" id="js-btnCheck">Check</button>
-        <button type="button" class="btn-reset" id="js-btnReset">Reset</button>
-      </div>
-    </section>
+    <div class="workspace-layout is-hidden">
+
+      <section class="header-block">
+        <h1 class="title-theme"></h1>
+        <strong class="total-score is-hidden">
+          <p>Correct answers: </p>
+          <span class="correct-answer" id="js-correctAnswers"></span>
+          <span id="js-totalAnswers"></span>
+        </strong>
+        <h2 class="title-h2">Welcome back!</h2>
+      </section>
+
+      <section class="body-block">
+        <form action="#" class="form-block">
+          <div class="holder" id="js-holderWords"></div>
+        </form>
+      </section>
+
+      <section class="footer-block">
+        <div class="footer-btns">
+          <button type="button" class="btn-check" id="js-btnCheck">Check</button>
+          <button type="button" class="btn-start-over" id="js-btnStartOver" disabled>Start over</button>
+          <button type="button" class="btn-reset-all" id="js-resetAll">Reset this set & make new one</button>
+        </div>
+      </section>
+    </div>
+    <!-- workspace-layout -->
+
+    <div class="themelist-layout">
+      <ul class="theme-list">
+        <li class="theme-items">
+          <div class="theme-header">
+            <h2>Some quick example text to build</h2>
+          </div>
+          <div class="theme-body">
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+          </div>
+          <div class="theme-footer">
+            <button type="button" class="theme-details-btn">details</button>
+          </div>
+        </li>
+        <li class="theme-items">
+          <div class="theme-header">
+            <h2>Content types</h2>
+          </div>
+          <div class="theme-body">
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+          </div>
+          <div class="theme-footer">
+            <button type="button" class="theme-details-btn">details</button>
+          </div>
+        </li>
+        <li class="theme-items">
+          <div class="theme-header">
+            <h2>Titles, text, and links</h2>
+          </div>
+          <div class="theme-body">
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+          </div>
+          <div class="theme-footer">
+            <button type="button" class="theme-details-btn">details</button>
+          </div>
+        </li>
+        <li class="theme-items">
+          <div class="theme-header">
+            <h2>Titles, text, and links</h2>
+          </div>
+          <div class="theme-body">
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+          </div>
+          <div class="theme-footer">
+            <button type="button" class="theme-details-btn">details</button>
+          </div>
+        </li>
+        <li class="theme-items">
+          <div class="theme-header">
+            <h2>Titles, text, and links</h2>
+          </div>
+          <div class="theme-body">
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+          </div>
+          <div class="theme-footer">
+            <button type="button" class="theme-details-btn">details</button>
+          </div>
+        </li>
+        <li class="theme-items">
+          <div class="theme-header">
+            <h2>Titles, text, and links</h2>
+          </div>
+          <div class="theme-body">
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <span class="theme-caption">Origin ⸺ Tran...</span>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+            <i class="theme-block"></i>
+          </div>
+          <div class="theme-footer">
+            <button type="button" class="theme-details-btn">details</button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <!--Modal for new words -->
-  <div class="modal" id="js-modal">
+  <div class="modal is-hidden" id="js-modal">
     <div class="modal-overlay"></div>
     <div class="modal-wrapper">
       <div class="modal-heading">
@@ -48,6 +158,12 @@
       </div>
       <div class="modal-holder">
         <form class="modal-form">
+          <div class="modal-topic">
+            <label class="modal-block full-width no-indicator">
+              <span class="modal-label">Theme:</span>
+              <input type="text" class="modal-control" id="js-theme" placeholder="Theme...">
+            </label>
+          </div>
           <div class="modal-inner">
             <label class="modal-block">
               <span class="modal-label">Orign:</span>

@@ -1,0 +1,103 @@
+.theme-list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.theme-items {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 240px;
+          flex: 1 1 240px;
+  margin-right: 120px;
+  margin-bottom: 64px;
+  max-width: 240px;
+}
+
+.theme-header {
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.theme-body {
+  border: 1px solid #000;
+  padding: 24px 16px 42px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.theme-caption {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.theme-caption:first-child {
+  margin-bottom: 10px;
+}
+
+.theme-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: relative;
+  margin-bottom: 26px;
+}
+.theme-block:last-child {
+  margin-bottom: 0;
+}
+.theme-block:after, .theme-block:before {
+  content: "";
+  position: absolute;
+}
+.theme-block:after {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+.theme-block:before {
+  width: 160px;
+  height: 1px;
+  border-radius: 4px;
+  background-color: #000;
+  margin-left: 26px;
+}
+
+.theme-footer {
+  text-align: left;
+}
+
+.theme-details-btn {
+  background-color: #17a2b8;
+  border: 2px solid #3498db;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 14px;
+  margin: 0;
+  text-transform: uppercase;
+}
+@media only screen and (min-width: 1025px) {
+  .theme-details-btn:hover {
+    background-color: transparent;
+    border: 2px solid #17a2b8;
+    color: #17a2b8;
+  }
+}/*# sourceMappingURL=theme-list.css.map */
