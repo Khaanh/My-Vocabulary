@@ -348,6 +348,7 @@ function addNewWord() {
 	}
 
 	showCountNewWords(newWords);
+	focusInput(newOrigin);
 }
 
 // FUNCTION CLOSE MODAL & START TEST
@@ -425,9 +426,8 @@ document.addEventListener('keydown', function (e) {
 
 // ========================================
 // FUNCTION SHOW TOOLTIPS BUTTONS AFTER LOADED
+let allBtns = document.querySelectorAll('.modal-buttons button');
 function buttonsTooltip() {
-	let allBtns = document.querySelectorAll('.modal-buttons button');
-
 	allBtns.forEach((button) => {
 		let fragment = document.createDocumentFragment();
 		let span = document.createElement('span');
@@ -435,7 +435,6 @@ function buttonsTooltip() {
 		span.textContent = button.dataset.info;
 		fragment.appendChild(span);
 		button.appendChild(fragment);
-		console.log(allBtns[0].parentElement);
 	});
 	setTimeout(() => {
 		allBtns[0].parentElement.classList.add('is-show');
@@ -446,3 +445,9 @@ function buttonsTooltip() {
 	}, 4500);
 }
 buttonsTooltip();
+
+// ========================================
+// FUNCTON FOCUS ON INPUT
+function focusInput(input) {
+	input.focus();
+}
