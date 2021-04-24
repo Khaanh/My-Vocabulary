@@ -35,7 +35,7 @@ let holderWords = document.querySelector('#js-holderWords');
 let correctAnswers = document.querySelector('#js-correctAnswers');
 let totalAnswers = document.querySelector('#js-totalAnswers');
 let btnCheck = document.querySelector('#js-btnCheck');
-let btnReset = document.querySelector('#js-btnReset');
+let btnStartOver = document.querySelector('#js-btnStartOver');
 let totalScore = document.querySelector('.total-score');
 let titleH2 = document.querySelector('.title-h2');
 let inputValues; // SELECT ALL ".form-control"
@@ -97,10 +97,8 @@ btnCheck.addEventListener('click', function () {
 		}
 	}
 
-	console.log('Result: ', getTranslates(arrValues[arrValues.length - 1]).includes('zz'));
-	console.log('Result: ', getTranslates(arrValues[arrValues.length - 1]));
-
 	this.disabled = true;
+	btnStartOver.disabled = false;
 	displayScore(isCorrectAnswer);
 	addMarks(isCorrectAnswer, isWrongAnswer, isEmptyAnswer);
 	iconForHelp = document.querySelectorAll('.icon-empty');
@@ -111,7 +109,8 @@ btnCheck.addEventListener('click', function () {
 });
 
 // BUTTON RESET ALL
-btnReset.addEventListener('click', () => {
+btnStartOver.addEventListener('click', function () {
+	this.disabled = true;
 	btnCheck.disabled = false;
 	resetValuesAndStates();
 	hideScore();
@@ -336,6 +335,7 @@ function addNewWord() {
 
 		newOrigin.parentElement.classList.remove('is-error');
 		newTranslate.parentElement.classList.remove('is-error');
+		focusInput(newOrigin);
 	} else {
 		newOrigin.parentElement.classList.add('is-error');
 		newTranslate.parentElement.classList.add('is-error');
@@ -349,7 +349,6 @@ function addNewWord() {
 	}
 
 	showCountNewWords(newWords);
-	focusInput(newOrigin);
 }
 
 // FUNCTION CLOSE MODAL & START TEST
@@ -452,3 +451,12 @@ buttonsTooltip();
 function focusInput(input) {
 	input.focus();
 }
+
+// ========================================
+// FUNCTION RESET ALL BUTTON
+let btnResetAll = document.querySelector('#js-resetAll');
+
+btnResetAll.addEventListener('click', () => {
+	localStorage.removeItem('newUser');
+	document.location.reload();
+});

@@ -248,23 +248,27 @@ button:disabled {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
-.btn-check {
-  display: block;
-  margin: 0 24px;
-  max-width: 240px;
-  width: 100%;
+.footer-btns button {
+  max-width: 200px;
+  margin: 0 12px;
   padding: 12px;
+  width: 100%;
   border-radius: 6px;
-  background-color: #27ae60;
-  border: 2px solid #27ae60;
-  color: #fff;
   cursor: pointer;
   outline: none;
+  color: #fff;
   font-size: 24px;
   line-height: 1.25;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
+}
+.footer-btns .btn-reset-all {
+  max-width: 240px;
+  padding: 8px;
+  font-size: 22px;
+}
+
+.btn-check {
+  background-color: #27ae60;
+  border: 2px solid #27ae60;
 }
 @media only screen and (min-width: 1025px) {
   .btn-check:hover {
@@ -278,25 +282,23 @@ button:disabled {
   pointer-events: none;
 }
 
-.btn-reset {
-  display: block;
-  margin: 0 24px;
-  max-width: 200px;
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  background-color: #343a40;
-  border: 2px solid #343a40;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
-  font-size: 24px;
-  line-height: 1.25;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
+.btn-start-over {
+  background-color: #007bff;
+  border: 2px solid #007bff;
 }
 @media only screen and (min-width: 1025px) {
-  .btn-reset:hover {
+  .btn-start-over:hover {
+    background-color: #0069d9;
+    border: 2px solid #0062cc;
+  }
+}
+
+.btn-reset-all {
+  background-color: #343a40;
+  border: 2px solid #343a40;
+}
+@media only screen and (min-width: 1025px) {
+  .btn-reset-all:hover {
     background-color: #23272b;
     border: 2px solid #1d2124;
   }

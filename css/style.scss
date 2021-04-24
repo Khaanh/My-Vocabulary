@@ -247,29 +247,37 @@ button {
 // body
 
 // footer
-.body-footer {}
+.footer-block {}
 
 .footer-btns {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  button {
+    max-width: 200px;
+    margin: 0 12px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .btn-reset-all {
+    max-width: 240px;
+    padding: 8px;
+    font-size: 22px;
+  }
+
 }
 
 .btn-check {
-  display: block;
-  margin: 0 24px;
-  max-width: 240px;
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
   background-color: #27ae60;
   border: 2px solid #27ae60;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
-  font-size: 24px;
-  line-height: 1.25;
-  transition: 0.3s ease;
 
   &:hover {
     @media only screen and (min-width: 1025px) {
@@ -285,21 +293,25 @@ button {
   }
 }
 
-.btn-reset {
-  display: block;
-  margin: 0 24px;
-  max-width: 200px;
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
+.btn-start-over {
+  // background-color: #343a40;
+  // border: 2px solid #343a40;
+  background-color: #007bff;
+  border: 2px solid #007bff;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      // background-color: #23272b;
+      // border: 2px solid #1d2124;
+      background-color: #0069d9;
+      border: 2px solid #0062cc;
+    }
+  }
+}
+
+.btn-reset-all {
   background-color: #343a40;
   border: 2px solid #343a40;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
-  font-size: 24px;
-  line-height: 1.25;
-  transition: 0.3s ease;
 
   &:hover {
     @media only screen and (min-width: 1025px) {
