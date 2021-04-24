@@ -27,7 +27,8 @@
  * TODO : TOPIC LIST;
  * TODO : RANDOM SORT;
  * TODO : SAVE SCORES AND COMPARE WITH PREVIOUS;
- * TODO : FOCUS ON FIRST INPUT AFTER ADDED;
+ * TODO : FOCUS ON FIRST INPUT AFTER ADDED; +
+ * TODO : RESET ALL BUTTON;
  */
 
 let holderWords = document.querySelector('#js-holderWords');
