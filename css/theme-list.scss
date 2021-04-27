@@ -27,6 +27,110 @@
   padding: 24px 16px 42px;
   border-radius: 6px;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.theme-navigation {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+.theme-btn-add,
+.theme-btn-remove {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 68%;
+  border: 3px solid transparent;
+  transition: 0.2s linear;
+  position: relative;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      &:after {
+        transform: translate(-50%, -130%);
+        opacity: 1;
+      }
+
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    font-size: 14px;
+    font-weight: 600;
+    width: max-content;
+    color: #2c3e50;
+    border: 1px solid #2c3e50;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 4px 12px;
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    border: 1px solid #2c3e50;
+    top: -15px;
+    left: 50%;
+    transform: translate(-50%, 0) rotate(45deg);
+    background-color: #fff;
+    z-index: 30;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transition: opacity 0.6s ease;
+    opacity: 0;
+  }
+}
+
+.theme-btn-add {
+  margin-bottom: 16px;
+  background-color: #2ecc71;
+  background-image: url(../img/icon-plus.svg);
+
+  &:after {
+    content: 'Add new word';
+  }
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      background-color: #27ae60;
+      border: 3px solid #2ecc71;
+    }
+  }
+}
+
+.theme-btn-remove {
+  background-color: #e74c3c;
+  background-image: url(../img/icon-minus.svg);
+
+  &:after {
+    content: 'remove word';
+  }
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      background-color: #c0392b;
+      border: 3px solid #e74c3c;
+    }
+  }
 }
 
 .theme-caption {
@@ -78,7 +182,7 @@
 
 }
 
-.theme-details-btn {
+.theme-btn-details {
   background-color: #17a2b8;
   border: 2px solid #3498db;
   color: #fff;
@@ -95,4 +199,11 @@
       color: #17a2b8;
     }
   }
+}
+
+.theme-btn-delete {
+  background-image: url(../img/icon-trash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }

@@ -34,6 +34,117 @@
   padding: 24px 16px 42px;
   border-radius: 6px;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.theme-navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+.theme-btn-add,
+.theme-btn-remove {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 68%;
+  border: 3px solid transparent;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  position: relative;
+}
+@media only screen and (min-width: 1025px) {
+  .theme-btn-add:hover:after,
+.theme-btn-remove:hover:after {
+    -webkit-transform: translate(-50%, -130%);
+            transform: translate(-50%, -130%);
+    opacity: 1;
+  }
+  .theme-btn-add:hover:before,
+.theme-btn-remove:hover:before {
+    opacity: 1;
+  }
+}
+.theme-btn-add:after,
+.theme-btn-remove:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -10%);
+          transform: translate(-50%, -10%);
+  font-size: 14px;
+  font-weight: 600;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 4px 12px;
+  opacity: 0;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.theme-btn-add:before,
+.theme-btn-remove:before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  border: 1px solid #2c3e50;
+  top: -15px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0) rotate(45deg);
+          transform: translate(-50%, 0) rotate(45deg);
+  background-color: #fff;
+  z-index: 30;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  -webkit-transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease;
+  opacity: 0;
+}
+
+.theme-btn-add {
+  margin-bottom: 16px;
+  background-color: #2ecc71;
+  background-image: url(../img/icon-plus.svg);
+}
+.theme-btn-add:after {
+  content: "Add new word";
+}
+@media only screen and (min-width: 1025px) {
+  .theme-btn-add:hover {
+    background-color: #27ae60;
+    border: 3px solid #2ecc71;
+  }
+}
+
+.theme-btn-remove {
+  background-color: #e74c3c;
+  background-image: url(../img/icon-minus.svg);
+}
+.theme-btn-remove:after {
+  content: "remove word";
+}
+@media only screen and (min-width: 1025px) {
+  .theme-btn-remove:hover {
+    background-color: #c0392b;
+    border: 3px solid #e74c3c;
+  }
 }
 
 .theme-caption {
@@ -84,7 +195,7 @@
   text-align: left;
 }
 
-.theme-details-btn {
+.theme-btn-details {
   background-color: #17a2b8;
   border: 2px solid #3498db;
   color: #fff;
@@ -95,9 +206,16 @@
   text-transform: uppercase;
 }
 @media only screen and (min-width: 1025px) {
-  .theme-details-btn:hover {
+  .theme-btn-details:hover {
     background-color: transparent;
     border: 2px solid #17a2b8;
     color: #17a2b8;
   }
+}
+
+.theme-btn-delete {
+  background-image: url(../img/icon-trash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }/*# sourceMappingURL=theme-list.css.map */
