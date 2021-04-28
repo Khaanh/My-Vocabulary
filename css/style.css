@@ -266,10 +266,8 @@ button:disabled {
   font-size: 24px;
   line-height: 1.25;
 }
-.footer-btns .btn-reset-all {
+.footer-btns .btn-create-topic {
   max-width: 240px;
-  padding: 8px;
-  font-size: 22px;
 }
 
 .btn-check {
@@ -299,12 +297,12 @@ button:disabled {
   }
 }
 
-.btn-reset-all {
+.btn-create-topic {
   background-color: #343a40;
   border: 2px solid #343a40;
 }
 @media only screen and (min-width: 1025px) {
-  .btn-reset-all:hover {
+  .btn-create-topic:hover {
     background-color: #23272b;
     border: 2px solid #1d2124;
   }
