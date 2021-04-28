@@ -372,6 +372,8 @@ function letsStart() {
 		// SET THEME
 		localStorage.setItem('theme', firstLaterUpperCase);
 		titleTheme.textContent = firstLaterUpperCase;
+
+		addTopics(themeValue, newWords);
 	}
 
 	newWords.forEach((item) => {
@@ -470,9 +472,27 @@ function focusInput(input) {
 
 // ========================================
 // FUNCTION RESET ALL BUTTON
-let btnResetAll = document.querySelector('#js-resetAll');
+let btnCreateTopic = document.querySelector('#js-createTopic');
 
-btnResetAll.addEventListener('click', () => {
+btnCreateTopic.addEventListener('click', () => {
 	localStorage.removeItem('newUser');
 	document.location.reload();
 });
+
+
+// ========================================
+// FUNCTION ADD TOPICS TO OBJ
+
+function addTopics(title, arr) {
+	let topics = {};
+	
+	if (localStorage.getItem(topics) === null) {
+		topics.theme = title;
+		topics.saves = arr;
+		console.log(topics);
+	} else {
+		console.log('topics:',localStorage.getItem(topics));
+	}
+
+	localStorage.setItem('topics', JSON.stringify(topics))
+}
