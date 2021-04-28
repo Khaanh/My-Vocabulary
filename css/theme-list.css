@@ -138,7 +138,7 @@
   background-image: url(../img/icon-minus.svg);
 }
 .theme-btn-remove:after {
-  content: "remove word";
+  content: "Remove word";
 }
 @media only screen and (min-width: 1025px) {
   .theme-btn-remove:hover {
@@ -192,7 +192,15 @@
 }
 
 .theme-footer {
-  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .theme-btn-details {
@@ -218,4 +226,17 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  height: 44px;
+  width: 44px;
+  margin: 0;
+  border: 2px solid #2c3e50;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+@media only screen and (min-width: 1025px) {
+  .theme-btn-delete:hover {
+    border: 2px solid #000;
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
 }/*# sourceMappingURL=theme-list.css.map */
