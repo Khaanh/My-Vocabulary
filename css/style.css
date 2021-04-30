@@ -269,6 +269,9 @@ button:disabled {
 .footer-btns .btn-create-topic {
   max-width: 240px;
 }
+.footer-btns .btn-see-list {
+  color: #000;
+}
 
 .btn-check {
   background-color: #27ae60;
