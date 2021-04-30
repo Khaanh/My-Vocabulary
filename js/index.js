@@ -361,12 +361,12 @@ function addNewWord() {
 // FUNCTION CLOSE MODAL & START TEST
 function letsStart() {
 	let themeValue = theme.value;
-	
+
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
 	// SET FLAG FOR FIRST VISIT
 	localStorage.setItem('newUser', false);
-	
+
 	if (themeValue) {
 		let firstLaterUpperCase = themeValue[0].toUpperCase() + themeValue.slice(1, themeValue.length);
 		// SET THEME
@@ -374,7 +374,7 @@ function letsStart() {
 		titleTheme.textContent = firstLaterUpperCase;
 		addTopics(themeValue, newWords);
 	}
-	
+
 	newWords.forEach((item) => {
 		createList(item.origin, item.translate);
 	});
@@ -480,7 +480,6 @@ btnCreateTopic.addEventListener('click', () => {
 
 // ========================================
 // FUNCTION ADD TOPICS TO OBJ
-
 function addTopics(title, arr) {
 	let topics = {};
 
@@ -497,3 +496,16 @@ function addTopics(title, arr) {
 
 	localStorage.setItem(`topics${countTopic}`, JSON.stringify(topics));
 }
+
+// ========================================
+// FUNCTION SHOW ALL LIST
+function goToAllTopics() {
+	let btnAllTopic = document.querySelector('#js-seeAllTopic');
+
+	btnAllTopic.addEventListener('click', () => {
+		let hostname = document.location.origin;
+		let pathname = `/topicslist.html`;
+		document.location.href = `${hostname}${pathname}`;
+	});
+}
+goToAllTopics();
