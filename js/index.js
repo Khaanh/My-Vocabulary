@@ -357,17 +357,16 @@ function addNewWord() {
 
 	showCountNewWords(newWords);
 }
-let countTopic = 0;
 
 // FUNCTION CLOSE MODAL & START TEST
 function letsStart() {
 	let themeValue = theme.value;
-
+	
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
 	// SET FLAG FOR FIRST VISIT
 	localStorage.setItem('newUser', false);
-
+	
 	if (themeValue) {
 		let firstLaterUpperCase = themeValue[0].toUpperCase() + themeValue.slice(1, themeValue.length);
 		// SET THEME
@@ -375,16 +374,7 @@ function letsStart() {
 		titleTheme.textContent = firstLaterUpperCase;
 		addTopics(themeValue, newWords);
 	}
-	if (!localStorage.getItem('count') === null) {
-		countTopic++;
-		localStorage.setItem('count', countTopic);
-	} else {
-		let test = localStorage.getItem('count');
-		console.log('test', test);
-		// localStorage.setItem('count', countTopic);
-		// console.log('countTopic', countTopic);
-	}
-
+	
 	newWords.forEach((item) => {
 		createList(item.origin, item.translate);
 	});
@@ -494,12 +484,16 @@ btnCreateTopic.addEventListener('click', () => {
 function addTopics(title, arr) {
 	let topics = {};
 
-	if (localStorage.getItem(topics) === null) {
-		topics.theme = title;
-		topics.saves = arr;
-		console.log(topics);
-		localStorage.setItem('topics', JSON.stringify(topics));
-	} else {
-		console.log('topics:', localStorage.getItem(topics));
+	topics.theme = title;
+	topics.saves = arr;
+
+	if (localStorage.getItem('count') === null) {
+		var countTopic = 0;
 	}
+
+	let currentCount = +localStorage.getItem('count');
+	countTopic = currentCount + 1;
+	localStorage.setItem('count', countTopic);
+
+	localStorage.setItem(`topics${countTopic}`, JSON.stringify(topics));
 }
