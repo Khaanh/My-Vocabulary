@@ -509,3 +509,38 @@ function goToAllTopics() {
 	});
 }
 goToAllTopics();
+
+// ========================================
+// FUNCTION GET TOPIC LIST FROM LOCAL STORAGE
+let topicArr = [];
+
+function getTopicList(cb) {
+	for (let i = 0; i < localStorage.length; i++) {
+		let key = localStorage.key(i);
+
+		if (key.includes('topics', 0)) {
+			topicArr.push(JSON.parse(localStorage.getItem(key)));
+		}
+	}
+
+	cb(topicArr);
+}
+getTopicList(createThemeItems);
+
+// ========================================
+// FUNCTION CREATE THEME ITEMS
+function createThemeItems(arr) {
+	let template = document.querySelector('#js-template');
+
+	for (let i = 0; i < arr.length; i++) {
+		let themeHeader = template.content.querySelector('.theme-header h2');
+		let themeList = document.querySelector('#js-themeList');
+		let subject = arr[i];
+
+		themeHeader.textContent = `${subject.theme}`;
+
+		let clone = document.importNode(template.content, true);
+		themeList.appendChild(clone);
+		console.log('subject', subject);
+	}
+}
