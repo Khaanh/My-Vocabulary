@@ -531,11 +531,34 @@ getTopicList(createThemeItems);
 // FUNCTION CREATE THEME ITEMS
 function createThemeItems(arr) {
 	let template = document.querySelector('#js-template');
+	let themeList = document.querySelector('#js-themeList');
+	let themeHeader = template.content.querySelector('.theme-header h2');
+	let themeCaption = template.content.querySelectorAll('.theme-caption');
 
 	for (let i = 0; i < arr.length; i++) {
-		let themeHeader = template.content.querySelector('.theme-header h2');
-		let themeList = document.querySelector('#js-themeList');
 		let subject = arr[i];
+		let firstCouple = arr[i];
+		let secondCouple = arr[i];
+
+		if (firstCouple.saves[0].origin.length > 5 || secondCouple.saves[0].origin.length > 5) {
+			let origin = `${firstCouple.saves[0].origin.slice(0, 5)}... ⸺ ${firstCouple.saves[0].translate[0].slice(
+				0,
+				3
+			)}...`;
+			let origin2 = `${secondCouple.saves[1].origin.slice(0, 5)}... ⸺ ${secondCouple.saves[1].translate[0].slice(
+				0,
+				3
+			)}...`;
+			themeCaption[0].textContent = origin;
+			themeCaption[1].textContent = origin2;
+		}
+
+		if (firstCouple.saves[0].origin.length < 5 || secondCouple.saves[0].origin.length < 5) {
+			let origin = `${firstCouple.saves[0].origin} ⸺ ${firstCouple.saves[0].translate[0].slice(0, 3)}...`;
+			let origin2 = `${secondCouple.saves[1].origin} ⸺ ${secondCouple.saves[1].translate[0].slice(0, 3)}...`;
+			themeCaption[0].textContent = origin;
+			themeCaption[1].textContent = origin2;
+		}
 
 		themeHeader.textContent = `${subject.theme}`;
 

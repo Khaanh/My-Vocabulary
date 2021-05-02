@@ -270,7 +270,15 @@ button:disabled {
   max-width: 240px;
 }
 .footer-btns .btn-see-list {
-  color: #000;
+  color: #fff;
+  background-color: #343a40;
+  border: 2px solid #343a40;
+}
+@media only screen and (min-width: 1025px) {
+  .footer-btns .btn-see-list:hover {
+    background-color: #23272b;
+    border: 2px solid #1d2124;
+  }
 }
 
 .btn-check {
@@ -296,17 +304,15 @@ button:disabled {
 @media only screen and (min-width: 1025px) {
   .btn-start-over:hover {
     background-color: #0069d9;
-    border: 2px solid #0062cc;
   }
 }
 
 .btn-create-topic {
-  background-color: #343a40;
-  border: 2px solid #343a40;
+  background-color: #f39c12;
+  border: 2px solid #f39c12;
 }
 @media only screen and (min-width: 1025px) {
   .btn-create-topic:hover {
-    background-color: #23272b;
-    border: 2px solid #1d2124;
+    background-color: #d88e1a;
   }
 }/*# sourceMappingURL=style.css.map */
