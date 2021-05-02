@@ -278,7 +278,16 @@ button {
   }
 
   .btn-see-list {
-    color: #000;
+    color: #fff;
+    background-color: #343a40;
+    border: 2px solid #343a40;
+
+    &:hover {
+      @media only screen and (min-width: 1025px) {
+        background-color: #23272b;
+        border: 2px solid #1d2124;
+      }
+    }
   }
 }
 
@@ -301,29 +310,23 @@ button {
 }
 
 .btn-start-over {
-  // background-color: #343a40;
-  // border: 2px solid #343a40;
   background-color: #007bff;
   border: 2px solid #007bff;
 
   &:hover {
     @media only screen and (min-width: 1025px) {
-      // background-color: #23272b;
-      // border: 2px solid #1d2124;
       background-color: #0069d9;
-      border: 2px solid #0062cc;
     }
   }
 }
 
 .btn-create-topic {
-  background-color: #343a40;
-  border: 2px solid #343a40;
+  background-color: #f39c12;
+  border: 2px solid #f39c12;
 
   &:hover {
     @media only screen and (min-width: 1025px) {
-      background-color: #23272b;
-      border: 2px solid #1d2124;
+      background-color: #d88e1a;
     }
   }
 }
