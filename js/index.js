@@ -509,6 +509,7 @@ function goToAllTopics() {
 
 		if (origin == 'https://khaanh.github.io') {
 			document.location.href = `${origin}${ghPathname}`;
+			return;
 		}
 
 		document.location.href = `${origin}${pathname}`;
