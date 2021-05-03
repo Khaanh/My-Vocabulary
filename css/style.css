@@ -42,7 +42,7 @@ button i {
 }
 button:disabled {
   background-color: #6c757d;
-  border-color: #6c757d;
+  border: 2px solid #6c757d;
   pointer-events: none;
 }
 
@@ -266,18 +266,22 @@ button:disabled {
   font-size: 24px;
   line-height: 1.25;
 }
+.footer-btns button:disabled {
+  background-color: #6c757d;
+  border: 2px solid #6c757d;
+  pointer-events: none;
+}
 .footer-btns .btn-create-topic {
   max-width: 240px;
 }
 .footer-btns .btn-see-list {
   color: #fff;
-  background-color: #343a40;
-  border: 2px solid #343a40;
+  background-color: #17a2b8;
+  border: 2px solid #17a2b8;
 }
 @media only screen and (min-width: 1025px) {
   .footer-btns .btn-see-list:hover {
-    background-color: #23272b;
-    border: 2px solid #1d2124;
+    background-color: #138496;
   }
 }
 
@@ -288,13 +292,7 @@ button:disabled {
 @media only screen and (min-width: 1025px) {
   .btn-check:hover {
     background-color: #0a8a40;
-    border: 2px solid #0a8a40;
   }
-}
-.btn-check:disabled {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  pointer-events: none;
 }
 
 .btn-start-over {

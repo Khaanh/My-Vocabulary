@@ -48,6 +48,7 @@ let iconForHelp;
 let wordsArray = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+	// CHECK NEW USER
 	if (localStorage.getItem('newUser') === null) {
 		titleH2.textContent = 'Good luck!';
 	} else {
@@ -65,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		wordsArray.forEach((item) => {
 			createList(item.origin, item.translate);
 		});
+	}
+
+	// SHOW/HIDE ALL LIST BUTTON
+	if (localStorage.getItem('count') >= 1) {
+		btnAllTopic.disabled = false;
 	}
 });
 
@@ -493,15 +499,18 @@ function addTopics(title, arr) {
 	let currentCount = +localStorage.getItem('count');
 	countTopic = currentCount + 1;
 	localStorage.setItem('count', countTopic);
-
 	localStorage.setItem(`topics${countTopic}`, JSON.stringify(topics));
+
+	if (localStorage.getItem('count') >= 1) {
+		btnAllTopic.disabled = false;
+	}
 }
 
 // ========================================
 // FUNCTION SHOW ALL LIST
-function goToAllTopics() {
-	let btnAllTopic = document.querySelector('#js-seeAllTopic');
+let btnAllTopic = document.querySelector('#js-seeAllTopic');
 
+function goToAllTopics() {
 	btnAllTopic.addEventListener('click', () => {
 		let origin = document.location.origin;
 		let pathname = `/topicslist.html`;
