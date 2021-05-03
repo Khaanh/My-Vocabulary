@@ -503,9 +503,15 @@ function goToAllTopics() {
 	let btnAllTopic = document.querySelector('#js-seeAllTopic');
 
 	btnAllTopic.addEventListener('click', () => {
-		let hostname = document.location.origin;
+		let origin = document.location.origin;
 		let pathname = `/topicslist.html`;
-		document.location.href = `${hostname}${pathname}`;
+		let ghPathname = `/My-Vocabulary${pathname}`;
+
+		if (origin == 'https://khaanh.github.io') {
+			document.location.href = `${origin}${ghPathname}`;
+		}
+
+		document.location.href = `${origin}${pathname}`;
 	});
 }
 goToAllTopics();
