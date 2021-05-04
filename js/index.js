@@ -528,33 +528,39 @@ goToAllTopics();
 
 // ========================================
 // FUNCTION GET TOPIC LIST FROM LOCAL STORAGE
-let topicArr = [];
 
 function getTopicList(cb) {
+	let topicArr = [];
+	let keys = [];
+
 	for (let i = 0; i < localStorage.length; i++) {
 		let key = localStorage.key(i);
 
 		if (key.includes('topics', 0)) {
 			topicArr.push(JSON.parse(localStorage.getItem(key)));
+			keys.push(key);
 		}
 	}
 
-	cb(topicArr);
+	cb(topicArr, keys);
 }
 getTopicList(createThemeItems);
 
 // ========================================
 // FUNCTION CREATE THEME ITEMS
-function createThemeItems(arr) {
+function createThemeItems(arr, keys) {
 	let template = document.querySelector('#js-template');
 	let themeList = document.querySelector('#js-themeList');
 	let themeHeader = template.content.querySelector('.theme-header h2');
+	let themeItems = template.content.querySelector('.theme-items');
 	let themeCaption = template.content.querySelectorAll('.theme-caption');
 
 	for (let i = 0; i < arr.length; i++) {
 		let subject = arr[i];
 		let firstCouple = arr[i];
 		let secondCouple = arr[i];
+		console.log('keys[i]', keys[i]);
+		console.log('arr[i]', arr[i]);
 
 		// CHECK LENGTH OF WORDS
 		if (firstCouple.saves[0].origin.length > 5 || secondCouple.saves[0].origin.length > 5) {
@@ -592,8 +598,10 @@ function createThemeItems(arr) {
 		}
 
 		themeHeader.textContent = `${subject.theme}`;
+		themeItems.dataset.key = `${keys[i]}`;
 
 		let clone = document.importNode(template.content, true);
+		console.log('clone', clone);
 		themeList.appendChild(clone);
 	}
 }
