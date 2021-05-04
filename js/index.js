@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		titleH2.textContent = 'Good luck!';
 	} else {
 		titleH2.textContent = 'Welcome back!';
-		titleTheme.textContent = localStorage.getItem('theme');
+		// titleTheme.textContent = localStorage.getItem('theme');
 
 		modal.classList.add('is-hidden');
 		wordsArray = JSON.parse(localStorage.saves);
@@ -605,3 +605,7 @@ function createThemeItems(arr, keys) {
 		themeList.appendChild(clone);
 	}
 }
+
+/**
+ * 04/05/21
+ */

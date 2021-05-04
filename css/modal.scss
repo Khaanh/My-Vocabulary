@@ -192,6 +192,15 @@
   width: 100%;
   text-align: left;
   margin-bottom: 8px;
+  position: relative;
+
+  .small-txt {
+    position: absolute;
+    opacity: 1;
+    color: #000;
+    top: 4px;
+    left: 78px;
+  }
 }
 
 .modal-control {
@@ -229,6 +238,16 @@
     }
 
     &:last-child {
+      .info-box {
+        transform: translate(-50%, 0);
+        opacity: 1;
+        z-index: 30;
+      }
+    }
+  }
+
+  button {
+    &:hover {
       .info-box {
         transform: translate(-50%, 0);
         opacity: 1;
