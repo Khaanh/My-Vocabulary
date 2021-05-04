@@ -271,6 +271,7 @@ button {
     color: #fff;
     font-size: 24px;
     line-height: 1.25;
+    flex: 0 0 auto;
 
     &:disabled {
       background-color: #6c757d;
@@ -281,18 +282,6 @@ button {
 
   .btn-create-topic {
     max-width: 240px;
-  }
-
-  .btn-see-list {
-    color: #fff;
-    background-color: #17a2b8;
-    border: 2px solid #17a2b8;
-
-    &:hover {
-      @media only screen and (min-width: 1025px) {
-        background-color: #138496;
-      }
-    }
   }
 }
 
@@ -305,12 +294,6 @@ button {
       background-color: #0a8a40;
     }
   }
-
-  // &:disabled {
-  //   background-color: #6c757d;
-  //   border-color: #6c757d;
-  //   pointer-events: none;
-  // }
 }
 
 .btn-start-over {
@@ -331,6 +314,17 @@ button {
   &:hover {
     @media only screen and (min-width: 1025px) {
       background-color: #d88e1a;
+    }
+  }
+}
+
+.btn-see-list {
+  background-color: #17a2b8;
+  border: 2px solid #17a2b8;
+
+  &:hover {
+    @media only screen and (min-width: 1025px) {
+      background-color: #138496;
     }
   }
 }
