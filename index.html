@@ -41,6 +41,7 @@
           <button class="btn-start-over" id="js-btnStartOver" disabled>Start over</button>
           <button class="btn-create-topic" id="js-createTopic">I wanna create topic list</button>
           <button class="btn-see-list" id="js-seeAllTopic" disabled>See all list</button>
+          <button class="btn-reset" style="color: #000;" id="js-reset">Reset all</button>
         </div>
       </section>
     </div>
@@ -141,6 +142,25 @@
     </div>
   </div>
 
+  <script>
+    function resetFunc() {
+      let resetBtn = document.querySelector('#js-reset');
+      resetBtn.addEventListener('click', () => {
+        let pathName = document.location.pathname;
+        let origin = document.location.origin;
+
+        if (pathName == '/index.html') {
+          localStorage.clear();
+          return;
+        }
+
+        document.location.href = `${origin}${pathName}`
+        localStorage.clear();
+        return;
+      });
+    }
+    resetFunc();
+  </script>
   <script src="./js/index.js"></script>
 </body>
 
