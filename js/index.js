@@ -287,7 +287,9 @@ let translateValueArr = [];
 btnMore.addEventListener('click', addNewWord);
 
 // BUTTON LETS START
-btnStart.addEventListener('click', letsStart);
+btnStart.addEventListener('click', () => {
+	letsStart(createThemeItems);
+});
 
 // BUTTON REMOVE LAST WORD
 btnRemove.addEventListener('click', removeLast);
@@ -365,9 +367,8 @@ function addNewWord() {
 }
 
 // FUNCTION CLOSE MODAL & START TEST
-function letsStart() {
+function letsStart(cb) {
 	let themeValue = theme.value;
-
 	// SET WORDS LIST TO LOCAL STORAGE
 	localStorage.setItem('saves', JSON.stringify(newWords));
 	// SET FLAG FOR FIRST VISIT
@@ -405,6 +406,21 @@ function letsStart() {
 	modal.addEventListener('animationend', () => {
 		modal.classList.add('is-hidden');
 	});
+
+	alert('createThemeItems');
+	let topicArr = [];
+	let keys = [];
+
+	for (let i = 0; i < localStorage.length; i++) {
+		let key = localStorage.key(i);
+		alert('1111111');
+		if (key.includes('topics', 0)) {
+			topicArr.push(JSON.parse(localStorage.getItem(key)));
+			keys.push(key);
+		}
+	}
+
+	cb(topicArr, keys);
 }
 
 // FUNCTION SHOW COUNT OF NEW WORDS
@@ -541,10 +557,11 @@ function getTopicList(cb) {
 			keys.push(key);
 		}
 	}
+	alert('createThemeItems');
 
 	cb(topicArr, keys);
 }
-getTopicList(createThemeItems);
+// getTopicList(createThemeItems);
 
 // ========================================
 // FUNCTION CREATE THEME ITEMS
@@ -554,7 +571,7 @@ function createThemeItems(arr, keys) {
 	let themeHeader = template.content.querySelector('.theme-header h2');
 	let themeItems = template.content.querySelector('.theme-items');
 	let themeCaption = template.content.querySelectorAll('.theme-caption');
-
+	alert('2222222222222222222222222');
 	for (let i = 0; i < arr.length; i++) {
 		let subject = arr[i];
 		let firstCouple = arr[i];
