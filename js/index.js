@@ -607,5 +607,22 @@ function createThemeItems(arr, keys) {
 }
 
 /**
- * 04/05/21
+ *19/05/21
  */
+
+// ========================================
+// FUNCTION
+
+function chooseTopic() {
+	let items = document.querySelectorAll('.theme-items');
+
+	for (let i = 0; i < items.length; i++) {
+		items[i].addEventListener('click', () => {
+			items[i].dataset;
+			console.log(`items[i].dataset:`, items[i].dataset);
+			let key = localStorage.getItem(items[i].dataset);
+			console.log(key);
+		});
+	}
+}
+chooseTopic();
