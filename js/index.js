@@ -613,16 +613,47 @@ function createThemeItems(arr, keys) {
 // ========================================
 // FUNCTION
 
-function chooseTopic() {
-	let items = document.querySelectorAll('.theme-items');
+// function getTopic() {
+let items = document.querySelectorAll('.theme-items');
 
-	for (let i = 0; i < items.length; i++) {
-		items[i].addEventListener('click', () => {
-			items[i].dataset;
-			console.log(`items[i].dataset:`, items[i].dataset);
-			let key = localStorage.getItem(items[i].dataset);
-			console.log(key);
-		});
-	}
+for (let i = 0; i < items.length; i++) {
+	items[i].addEventListener('click', () => {
+		console.log(items[i]);
+		let key = localStorage.getItem(items[i].dataset.key);
+		console.log(JSON.parse(key).saves);
+		let [origin, translate] = JSON.parse(key).saves;
+
+		console.log(origin);
+		console.log(translate);
+		// FUNCTION TO CREATE LIST WITH TWO PARAMS
+		function createList(origin, translate) {
+			let li = document.createElement('label');
+
+			li.classList.add('list-items');
+			li.innerHTML = `<span class="list-origin" data-translate="${translate}">${origin}</span>
+			<div class="form-holder">
+			<input type="text" class="form-control">
+			</div>`;
+
+			holderWords.appendChild(li);
+
+			// AFTER CREATED ALL LIST, SELECT IT TO GET VALUES
+			inputValues = document.querySelectorAll('.form-control');
+			alert('createList');
+		}
+		createList(origin, translate);
+
+		let pathName = document.location.pathname;
+		let originPath = document.location.origin;
+
+		if (pathName == '/topicslist.html') {
+			document.location.href = `${originPath}/index.html`;
+			return;
+		}
+
+		document.location.href = `${originPath}${pathName}`;
+		return;
+	});
 }
-chooseTopic();
+// }
+// getTopic();
