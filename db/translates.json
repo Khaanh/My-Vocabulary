@@ -1,0 +1,25 @@
+{
+	"posts": [
+		{
+			"id": 1,
+			"name": "Khanh",
+			"number": 777
+		},
+		[
+			{
+				"origin": "Dog",
+				"translate": [
+					"собака"
+				]
+			}
+		]
+	],
+	"arr": [
+		{
+			"origin": "Cat",
+			"translate": [
+				"кошка"
+			]
+		}
+	]
+}

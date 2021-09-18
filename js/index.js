@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/posts";
+const url = "http://localhost:3000/arr";
 // let url = "./db.json";
 let btnTest = document.querySelector("#btn-test");
 let btnGet = document.querySelector("#btn-get");
