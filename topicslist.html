@@ -126,28 +126,28 @@
   </template>
 
   <script>
-    function resetFunc() {
-      let resetBtn = document.querySelector('#js-reset');
-      resetBtn.addEventListener('click', () => {
-        let pathName = document.location.pathname;
-        let origin = document.location.origin;
+    // function resetFunc() {
+    //   let resetBtn = document.querySelector('#js-reset');
+    //   resetBtn.addEventListener('click', () => {
+    //     let pathName = document.location.pathname;
+    //     let origin = document.location.origin;
 
-        if (pathName == '/index.html') {
-          localStorage.clear();
-          return;
-        }
-        if (pathName == '/topicslist.html') {
-          localStorage.clear();
-          document.location.href = `${origin}/index.html`
-          return;
-        }
+    //     if (pathName == '/index.html') {
+    //       localStorage.clear();
+    //       return;
+    //     }
+    //     if (pathName == '/topicslist.html') {
+    //       localStorage.clear();
+    //       document.location.href = `${origin}/index.html`
+    //       return;
+    //     }
 
-        document.location.href = `${origin}${pathName}`
-        localStorage.clear();
-        return;
-      });
-    }
-    resetFunc();
+    //     document.location.href = `${origin}${pathName}`
+    //     localStorage.clear();
+    //     return;
+    //   });
+    // }
+    // resetFunc();
   </script>
   <script src="./js/index.js"></script>
 </body>

@@ -1,25 +1,37 @@
 {
-	"posts": [
-		{
-			"id": 1,
-			"name": "Khanh",
-			"number": 777
-		},
-		[
-			{
-				"origin": "Dog",
-				"translate": [
-					"собака"
-				]
-			}
-		]
-	],
-	"arr": [
-		{
-			"origin": "Cat",
-			"translate": [
-				"кошка"
-			]
-		}
-	]
+  "posts": [
+    {
+      "id": 1,
+      "name": "Khanh",
+      "number": 777
+    },
+    [
+      {
+        "origin": "dog",
+        "translate": [
+          "sobaka"
+        ]
+      },
+      {
+        "origin": "cat",
+        "translate": [
+          "kowka"
+        ]
+      },
+      {
+        "origin": "duck",
+        "translate": [
+          "ytka"
+        ]
+      }
+    ]
+  ],
+  "arr": [
+    {
+      "origin": "Cat",
+      "translate": [
+        "кошка"
+      ]
+    }
+  ]
 }

@@ -14,10 +14,12 @@ body {
 }
 
 .wrapper {
-  max-width: 1100px;
+  // max-width: 1100px;
+  // max-width: 100%;
   width: 100%;
   padding: 0 10px;
   margin: 68px auto;
+  position: relative;
 }
 
 // button
@@ -280,9 +282,9 @@ button {
     }
   }
 
-  .btn-create-topic {
-    max-width: 240px;
-  }
+  // .btn-create-topic {
+  //   max-width: 240px;
+  // }
 }
 
 .btn-check {
@@ -318,13 +320,13 @@ button {
   }
 }
 
-.btn-see-list {
-  background-color: #17a2b8;
-  border: 2px solid #17a2b8;
+// .btn-see-list {
+//   background-color: #17a2b8;
+//   border: 2px solid #17a2b8;
 
-  &:hover {
-    @media only screen and (min-width: 1025px) {
-      background-color: #138496;
-    }
-  }
-}
+//   &:hover {
+//     @media only screen and (min-width: 1025px) {
+//       background-color: #138496;
+//     }
+//   }
+// }

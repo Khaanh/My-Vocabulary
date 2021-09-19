@@ -1,5 +1,4 @@
-const url = "http://localhost:3000/arr";
-// let url = "./db.json";
+const url = "http://localhost:3000/posts";
 let btnTest = document.querySelector("#btn-test");
 let btnGet = document.querySelector("#btn-get");
 
@@ -76,33 +75,33 @@ let inputValues; // SELECT ALL ".form-control"
 let iconForHelp;
 let wordsArray = [];
 
-document.addEventListener("DOMContentLoaded", () => {
-  // CHECK NEW USER
-  if (localStorage.getItem("newUser") === null) {
-    titleH2.textContent = "Good luck!";
-  } else {
-    titleH2.textContent = "Welcome back!";
-    // titleTheme.textContent = localStorage.getItem('theme');
+// document.addEventListener("DOMContentLoaded", () => {
+//   // CHECK NEW USER
+//   if (localStorage.getItem("newUser") === null) {
+//     titleH2.textContent = "Good luck!";
+//   } else {
+//     titleH2.textContent = "Welcome back!";
+//     // titleTheme.textContent = localStorage.getItem('theme');
 
-    modal.classList.add("is-hidden");
-    wordsArray = JSON.parse(localStorage.saves);
+//     modal.classList.add("is-hidden");
+//     wordsArray = JSON.parse(localStorage.saves);
 
-    //CHECK AVAILABILITY ARRAY WORD BEFORE START
-    totalAnswers.textContent =
-      wordsArray.length > 0 ? `/${wordsArray.length}` : "/ 0";
-    correctAnswers.textContent = 0;
+//     //CHECK AVAILABILITY ARRAY WORD BEFORE START
+//     totalAnswers.textContent =
+//       wordsArray.length > 0 ? `/${wordsArray.length}` : "/ 0";
+//     correctAnswers.textContent = 0;www
 
-    // CREATE A LIST FOR EACH OF WORD
-    wordsArray.forEach((item) => {
-      createList(item.origin, item.translate);
-    });
-  }
+//     // CREATE A LIST FOR EACH OF WORD
+//     wordsArray.forEach((item) => {
+//       createList(item.origin, item.translate);
+//     });
+//   }
 
-  // SHOW/HIDE ALL LIST BUTTON
-  if (localStorage.getItem("count") >= 1) {
-    btnAllTopic.disabled = false;
-  }
-});
+//   // SHOW/HIDE ALL LIST BUTTON
+//   if (localStorage.getItem("count") >= 1) {
+//     btnAllTopic.disabled = false;
+//   }
+// });
 
 // FUNCTION TO CREATE LIST WITH TWO PARAMS
 function createList(origin, translate) {
@@ -378,20 +377,6 @@ async function addNewWord() {
       translate: translateValueArr,
     });
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(newWords),
-    })
-      .then((resp) => {
-        return resp.json();
-      })
-      .then((value) => {
-        console.log("value: ", value);
-      });
-
     newOrigin.parentElement.classList.add("is-added");
     newTranslate.parentElement.classList.add("is-added");
 
@@ -438,6 +423,20 @@ function letsStart() {
     titleTheme.textContent = firstLaterUpperCase;
     addTopics(themeValue, newWords);
   }
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(newWords),
+  })
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((value) => {
+      console.log("value: ", value);
+    });
 
   newWords.forEach((item) => {
     createList(item.origin, item.translate);
@@ -714,3 +713,21 @@ chooseTopic();
 //       console.log("value: ", value);
 //     });
 // });
+
+function resetFunc() {
+  let resetBtn = document.querySelector("#js-reset");
+  resetBtn.addEventListener("click", () => {
+    let pathName = document.location.pathname;
+    let origin = document.location.origin;
+
+    if (pathName == "/index.html") {
+      localStorage.clear();
+      return;
+    }
+
+    document.location.href = `${origin}${pathName}`;
+    localStorage.clear();
+    return;
+  });
+}
+resetFunc();

@@ -1,0 +1,45 @@
+.navigation-app {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	position: absolute;
+	top: -40px;
+	left: 20px;
+
+	button {
+		margin: 0;
+
+		&:not(:last-of-type) {
+			margin-bottom: 18px;
+		}
+	}
+
+	.btn-create-topic {
+		max-width: 240px;
+	}
+
+	.btn-see-list {
+		background-color: #17a2b8;
+		border: 2px solid #17a2b8;
+
+		&:hover {
+			background-color: #138496;
+		}
+
+		&:disabled {
+			background-color: #6c757d;
+			border: 2px solid #6c757d;
+			pointer-events: none;
+		}
+	}
+
+	.btn-reset {
+		color: #000;
+		box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+
+		&:hover {
+			box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+		}
+	}
+}

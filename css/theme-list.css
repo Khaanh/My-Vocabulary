@@ -1,22 +1,13 @@
 .theme-list {
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .theme-items {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 240px;
-          flex: 1 1 240px;
+  flex: 1 1 240px;
   margin-right: 120px;
   margin-bottom: 64px;
   max-width: 240px;
@@ -39,13 +30,8 @@
 }
 
 .theme-navigation {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: absolute;
   top: 0;
   left: 100%;
@@ -61,15 +47,13 @@
   background-position: center;
   background-size: 68%;
   border: 3px solid transparent;
-  -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
   position: relative;
 }
 @media only screen and (min-width: 1025px) {
   .theme-btn-add:hover:after,
 .theme-btn-remove:hover:after {
-    -webkit-transform: translate(-50%, -130%);
-            transform: translate(-50%, -130%);
+    transform: translate(-50%, -130%);
     opacity: 1;
   }
   .theme-btn-add:hover:before,
@@ -83,8 +67,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  -webkit-transform: translate(-50%, -10%);
-          transform: translate(-50%, -10%);
+  transform: translate(-50%, -10%);
   font-size: 14px;
   font-weight: 600;
   width: -webkit-max-content;
@@ -96,7 +79,6 @@
   border-radius: 3px;
   padding: 4px 12px;
   opacity: 0;
-  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 .theme-btn-add:before,
@@ -108,13 +90,11 @@
   border: 1px solid #2c3e50;
   top: -15px;
   left: 50%;
-  -webkit-transform: translate(-50%, 0) rotate(45deg);
-          transform: translate(-50%, 0) rotate(45deg);
+  transform: translate(-50%, 0) rotate(45deg);
   background-color: #fff;
   z-index: 30;
   border-left-color: transparent;
   border-top-color: transparent;
-  -webkit-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
   opacity: 0;
 }
@@ -159,15 +139,9 @@
 }
 
 .theme-block {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   position: relative;
   margin-bottom: 26px;
 }
@@ -193,15 +167,9 @@
 }
 
 .theme-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .theme-btn-details {
@@ -231,13 +199,11 @@
   width: 44px;
   margin: 0;
   border: 2px solid #2c3e50;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 @media only screen and (min-width: 1025px) {
   .theme-btn-delete:hover {
     border: 2px solid #000;
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95);
+    transform: scale(0.95);
   }
 }/*# sourceMappingURL=theme-list.css.map */

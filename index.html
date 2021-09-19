@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/modal.css">
   <link rel="stylesheet" href="./css/theme-list.css">
+  <link rel="stylesheet" href="./css/navigation-app.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap"
     rel="stylesheet">
@@ -17,6 +18,12 @@
 <body>
 
   <div class="wrapper">
+    <div class="navigation-app">
+      <button class="btn-create-topic" id="js-createTopic">I wanna create topic list</button>
+      <button class="btn-see-list" id="js-seeAllTopic" disabled>I wanna see all list</button>
+      <button class="btn-reset" id=" js-reset">Reset all</button>
+    </div>
+
     <div class="workspace-layout">
 
       <section class="header-block">
@@ -39,9 +46,9 @@
         <div class="footer-btns">
           <button class="btn-check" id="js-btnCheck">Check</button>
           <button class="btn-start-over" id="js-btnStartOver" disabled>Start over</button>
-          <button class="btn-create-topic" id="js-createTopic">I wanna create topic list</button>
-          <button class="btn-see-list" id="js-seeAllTopic" disabled>See all list</button>
-          <button class="btn-reset" style="color: #000;" id="js-reset">Reset all</button>
+          <!-- <button class="btn-create-topic" id="js-createTopic">I wanna create topic list</button>
+          <button class="btn-see-list" id="js-seeAllTopic" disabled>I wanna see all list</button> -->
+          <!-- <button class="btn-reset" style="color: #000;" id="js-reset">Reset all</button> -->
         </div>
       </section>
     </div>
@@ -148,23 +155,23 @@
   <button id="btn-get"></button>
 
   <script>
-    function resetFunc() {
-      let resetBtn = document.querySelector('#js-reset');
-      resetBtn.addEventListener('click', () => {
-        let pathName = document.location.pathname;
-        let origin = document.location.origin;
+    // function resetFunc() {
+    //   let resetBtn = document.querySelector('#js-reset');
+    //   resetBtn.addEventListener('click', () => {
+    //     let pathName = document.location.pathname;
+    //     let origin = document.location.origin;
 
-        if (pathName == '/index.html') {
-          localStorage.clear();
-          return;
-        }
+    //     if (pathName == '/index.html') {
+    //       localStorage.clear();
+    //       return;
+    //     }
 
-        document.location.href = `${origin}${pathName}`
-        localStorage.clear();
-        return;
-      });
-    }
-    resetFunc();
+    //     document.location.href = `${origin}${pathName}`
+    //     localStorage.clear();
+    //     return;
+    //   });
+    // }
+    // resetFunc();
   </script>
   <script src="./js/index.js"></script>
 </body>

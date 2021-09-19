@@ -1,6 +1,5 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -15,10 +14,10 @@ body {
 }
 
 .wrapper {
-  max-width: 1100px;
   width: 100%;
   padding: 0 10px;
   margin: 68px auto;
+  position: relative;
 }
 
 button {
@@ -34,7 +33,6 @@ button {
   cursor: pointer;
   margin: 0 8px;
   position: relative;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 button i {
@@ -62,12 +60,8 @@ button:disabled {
 }
 
 .total-score {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   font-size: 36px;
   color: #2c3e50;
 }
@@ -90,19 +84,10 @@ button:disabled {
 }
 
 .list-items {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
   margin-bottom: 32px;
   cursor: pointer;
 }
@@ -123,8 +108,7 @@ button:disabled {
   position: absolute;
   bottom: -24%;
   left: 0;
-  -webkit-transform: translate(0, 50%);
-          transform: translate(0, 50%);
+  transform: translate(0, 50%);
 }
 
 .list-origin {
@@ -135,7 +119,6 @@ button:disabled {
   text-align: right;
   margin-right: 44px;
   opacity: 1;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 
@@ -161,8 +144,7 @@ button:disabled {
   width: 24px;
   right: -30px;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 .form-holder.is-correct:after {
   background-image: url(../img/icon-check.svg);
@@ -182,8 +164,7 @@ button:disabled {
   position: absolute;
   right: -36px;
   top: 50%;
-  -webkit-transform: translate(calc(100% + 45px), -50%);
-          transform: translate(calc(100% + 45px), -50%);
+  transform: translate(calc(100% + 45px), -50%);
   font-size: 18px;
   border: 1px solid #e67e22;
   padding: 8px 16px;
@@ -197,7 +178,6 @@ button:disabled {
   width: -moz-max-content;
   width: max-content;
   opacity: 0;
-  -webkit-transition: opacity 0.1s ease-in-out, right 0.2s ease-in-out;
   transition: opacity 0.1s ease-in-out, right 0.2s ease-in-out;
 }
 .form-holder .tool-tip:after {
@@ -206,8 +186,7 @@ button:disabled {
   left: -13px;
   top: 50%;
   border: 8px solid #e67e22;
-  -webkit-transform: rotate(45deg) translate(-10%, -55%);
-          transform: rotate(45deg) translate(-10%, -55%);
+  transform: rotate(45deg) translate(-10%, -55%);
   border-right-color: transparent;
   border-top-color: transparent;
 }
@@ -238,21 +217,14 @@ button:disabled {
   width: 24px;
   right: -30px;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
+  transform: translate(0, -50%);
   z-index: 100;
 }
 
 .footer-btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .footer-btns button {
   max-width: 200px;
@@ -265,17 +237,12 @@ button:disabled {
   color: #fff;
   font-size: 24px;
   line-height: 1.25;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 .footer-btns button:disabled {
   background-color: #6c757d;
   border: 2px solid #6c757d;
   pointer-events: none;
-}
-.footer-btns .btn-create-topic {
-  max-width: 240px;
 }
 
 .btn-check {
@@ -305,15 +272,5 @@ button:disabled {
 @media only screen and (min-width: 1025px) {
   .btn-create-topic:hover {
     background-color: #d88e1a;
-  }
-}
-
-.btn-see-list {
-  background-color: #17a2b8;
-  border: 2px solid #17a2b8;
-}
-@media only screen and (min-width: 1025px) {
-  .btn-see-list:hover {
-    background-color: #138496;
   }
 }/*# sourceMappingURL=style.css.map */
